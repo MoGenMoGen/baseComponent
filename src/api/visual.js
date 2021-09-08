@@ -5,9 +5,6 @@ export const getList = (params) => request({
   method: 'get',
   params: params
 });
-
-
-
 export const copyObj = (id) => request({
   url: '/api/blade-visual/visual/copy',
   method: 'post',
@@ -88,5 +85,12 @@ export const delObj = (id) => request({
   method: 'post',
   params: {
     ids: id
+  }
+});
+export const getVal = (mqtt) => request({
+  url: '/api/blade-mh/site/valByMqtt',
+  method: 'get',
+  params: {
+    mqtt
   }
 });

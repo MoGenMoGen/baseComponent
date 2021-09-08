@@ -135,10 +135,10 @@ export default {
       });
     },
     rowUpdate (row, index, done, loading) {
-      if (this.vaildData(index)) {
-        this.$message.error('例子模板不允许修改')
-        return false;
-      }
+      // if (this.vaildData(index)) {
+      //   this.$message.error('例子模板不允许修改')
+      //   return false;
+      // }
       update(row).then(() => {
         this.onLoad();
         this.$message({
@@ -152,10 +152,10 @@ export default {
       });
     },
     rowDel (row, index) {
-      if (this.vaildData(index)) {
-        this.$message.error('例子模板不允许修改')
-        return false;
-      }
+      // if (this.vaildData(index)) {
+      //   this.$message.error('例子模板不允许修改')
+      //   return false;
+      // }
       this.$prompt('请输入管理员密码', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',

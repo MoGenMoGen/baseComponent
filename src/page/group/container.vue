@@ -16,8 +16,6 @@
 import subgroup from './subgroup'
 import common from '@/config'
 import {getObj} from '@/api/visual'
-import mqtt from 'mqtt'
-
 export default {
   name: 'contents',
   inject: ["contain"],
@@ -42,30 +40,6 @@ export default {
   },
   data() {
     return {
-      connection: {
-        host: '127.0.0.1:8083/mqtt',
-        clean: true, // 保留会话
-        connectTimeout: 4000, // 超时时间
-        reconnectPeriod: 4000, // 重连时间间隔
-        // 认证信息
-        clientId: 'mqttjs_3be2c321',
-        username: '',
-        password: '',
-      },
-      subscription: {
-        topic: 'topic/mqttx,topic/mqttx2',
-        qos: 0,
-      },
-      publish: {
-        topic: 'topic/browser',
-        qos: 0,
-        payload: '{ "msg": "Hello, I am browser." }',
-      },
-      client: {
-        connected: false,
-      },
-      subscribeSuccess: false,
-
       contentStyle: {},
       selectCount: {},
       scale: 1,
@@ -73,6 +47,7 @@ export default {
     }
   },
   computed: {
+
     stepScale() {
       let scale = Number((100 / (this.scale * this.wscale))).toFixed(2)
       return scale
@@ -102,68 +77,10 @@ export default {
     }
   },
   mounted() {
-
     this.initData();
     this.initFun();
-
-
   },
   methods: {
-    setMqtt(info) {
-      if (info.mqtt == 1) {
-        let info = this.contain.config;
-        this.connection.host = info.mqttHost
-        this.createConnection()
-        this.doSubscribe()
-      }
-    },
-
-
-    //订阅主题
-    doSubscribe() {
-      const {topic, qos} = this.subscription
-      console.log()
-      let strings = topic.split(",");
-      for (let string of strings) {
-        this.client.subscribe(string, qos, (error, res) => {
-          if (error) {
-            console.log('Subscribe to topics error', error)
-            return
-          }
-          this.subscribeSuccess = true
-          console.log('Subscribe to topics res', res)
-        })
-      }
-
-
-    },
-
-    // 创建连接
-    createConnection() {
-      const {host, ...options} = this.connection
-      const connectUrl = `ws://${host}`
-      try {
-        console.log(options)
-        this.client = mqtt.connect(connectUrl, options)
-      } catch (error) {
-        console.log('mqtt.connect error', error)
-      }
-      this.client.on('connect', () => {
-        console.log('Connection succeeded!')
-      })
-      this.client.on('error', error => {
-        console.log('Connection failed', error)
-      })
-      this.client.on('message', (topic, message) => {
-        const a = {
-          topic: topic,
-          message: `${message}`
-        }
-        this.resetSetItem('watchStorage', JSON.stringify(a));
-      })
-    },
-
-
     initFun() {
       ['handleRefresh', 'handleGetObj', 'handleRes'].forEach(ele => {
         this[ele] = this.$refs.subgroup[ele]
@@ -171,7 +88,6 @@ export default {
     },
     //初始化数据
     initData() {
-      this.setMqtt(JSON.parse(JSON.stringify(this.contain.config)))
       const id = this.$route ? this.$route.params.id : this.props.id
       this.contain.id = id;
       this.contain.contentWidth = this.$refs.content.offsetWidth;
@@ -195,7 +111,6 @@ export default {
         });
         getObj(id).then(res => {
           const data = res.data.data;
-
           this.contain.obj = data;
           config = data.config;
           this.contain.json = {
@@ -278,6 +193,9 @@ export default {
       }
     },
     handleMoveSelectList(left, top, type, postion) {
+
+      console.log(3333333)
+
       this.contain.active.forEach(ele => {
         ele = this.contain.findlist(ele)
         const ele_component = ele.component;

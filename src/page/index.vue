@@ -1,16 +1,10 @@
 <template>
   <div class="index">
     <div class="header">
-      <img src="/img/header.jpg"
+      <img src="/img/header.png"
            alt=""
            width="100%"
            height="210px">
-      <div class="title">
-        <p>
-          JULIAN-DATA<br />
-          <small>可视化数据</small>
-        </p>
-      </div>
       <el-menu class="nav"
                mode="horizontal"
                :default-active="activeName"

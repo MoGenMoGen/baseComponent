@@ -331,35 +331,35 @@
           </el-tab-pane>
 
           <!-- 数据通讯 -->
-          <el-tab-pane name="5" v-if="vaildProp('',[undefined])">
-            <el-tooltip slot="label"  effect="dark"  content="数据通讯"    placement="top">
-              <div><i class="el-icon-tickets"></i></div>
-            </el-tooltip>
-            <el-form label-width="120px"  label-position="left"   size="mini">
-              <el-form-item label="MQTT数据通信">
-                <el-radio-group v-model="config.mqtt">
-                  <el-radio :label="1">开启</el-radio>
-                  <el-radio :label="2">关闭</el-radio>
-                </el-radio-group>
-              </el-form-item>
+<!--          <el-tab-pane name="5" v-if="vaildProp('',[undefined])">-->
+<!--            <el-tooltip slot="label"  effect="dark"  content="数据通讯"    placement="top">-->
+<!--              <div><i class="el-icon-tickets"></i></div>-->
+<!--            </el-tooltip>-->
+<!--            <el-form label-width="120px"  label-position="left"   size="mini">-->
+<!--              <el-form-item label="MQTT数据通信">-->
+<!--                <el-radio-group v-model="config.mqtt">-->
+<!--                  <el-radio :label="1">开启</el-radio>-->
+<!--                  <el-radio :label="2">关闭</el-radio>-->
+<!--                </el-radio-group>-->
+<!--              </el-form-item>-->
 
-              <div v-if="config.mqtt === 1">
-                <el-form-item label="URL地址*">
-                  <avue-input v-model="config.mqttHost"></avue-input>
-                </el-form-item>
-                <el-form-item label="用户名">
-                  <avue-input v-model="config.mqttUsername"></avue-input>
-                </el-form-item>
-                <el-form-item label="密码">
-                  <avue-input v-model="config.mqttPassword"></avue-input>
-                </el-form-item>
-                <el-form-item label="Topics *">
-                  <avue-input v-model="config.mqttTopics"  type="textarea"
-                              :rows="3"  placeholder="多个topics用英文逗号隔开"></avue-input>
-                </el-form-item>
-              </div>
-            </el-form>
-          </el-tab-pane>
+<!--              <div v-if="config.mqtt === 1">-->
+<!--                <el-form-item label="URL地址*">-->
+<!--                  <avue-input v-model="config.mqttHost"></avue-input>-->
+<!--                </el-form-item>-->
+<!--                <el-form-item label="用户名">-->
+<!--                  <avue-input v-model="config.mqttUsername"></avue-input>-->
+<!--                </el-form-item>-->
+<!--                <el-form-item label="密码">-->
+<!--                  <avue-input v-model="config.mqttPassword"></avue-input>-->
+<!--                </el-form-item>-->
+<!--                <el-form-item label="Topics *">-->
+<!--                  <avue-input v-model="config.mqttTopics"  type="textarea"-->
+<!--                              :rows="3"  placeholder="多个topics用英文逗号隔开"></avue-input>-->
+<!--                </el-form-item>-->
+<!--              </div>-->
+<!--            </el-form>-->
+<!--          </el-tab-pane>-->
         </el-tabs>
       </div>
     </div>

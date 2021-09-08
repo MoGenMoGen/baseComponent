@@ -34,25 +34,8 @@
 
     <el-form-item label="MQTT订阅主题">
       <avue-input v-model="main.activeObj.mqtt"> </avue-input>
-
-
     </el-form-item>
-
     <el-collapse accordion>
-
-
-
-
-<!--      <el-collapse-item title="MQTT设置">-->
-<!--        <template v-if="main.activeOption.scroll">-->
-<!--          <el-form-item label="滚动速度">-->
-<!--            <avue-input v-model="main.activeOption.speed"></avue-input>-->
-<!--          </el-form-item>-->
-<!--        </template>-->
-<!--      </el-collapse-item>-->
-
-
-
       <el-collapse-item title="跑马灯设置">
         <el-form-item label="开启">
           <avue-switch v-model="main.activeOption.scroll"></avue-switch>
@@ -63,10 +46,6 @@
           </el-form-item>
         </template>
       </el-collapse-item>
-
-
-
-
 
       <el-collapse-item title="超链设置">
         <el-form-item label="开启">

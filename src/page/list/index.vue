@@ -249,10 +249,10 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        if (this.vaildData(index)) {
-          this.$message.error('例子模板不允许修改')
-          return false;
-        }
+        // if (this.vaildData(index)) {
+        //   this.$message.error('例子模板不允许修改')
+        //   return false;
+        // }
         delObj(item.id).then(() => {
           this.list.splice(index, 1)
           this.$message.success('删除成功')
@@ -309,10 +309,10 @@ export default {
           this.handleEdit({ id })
         })
       } else {
-        if (this.vaildData(Number(this.index))) {
-          this.$message.error('例子模板不允许修改')
-          return false;
-        }
+        // if (this.vaildData(Number(this.index))) {
+        //   this.$message.error('例子模板不允许修改')
+        //   return false;
+        // }
         updateObj({
           id: this.form.id,
           category: this.form.category,

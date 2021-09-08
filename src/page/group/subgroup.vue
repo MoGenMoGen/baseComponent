@@ -77,6 +77,7 @@ export default {
     }
   },
   created () {
+
     Object.keys(echartComponents).map(ele => {
       let component = echartComponents[ele];
       Vue.component(component.name, component);
@@ -137,6 +138,7 @@ export default {
     handleGetObj (val) {
       return this.$refs[`${this.common.DEAFNAME}${val}`];
     },
+    //配置界面鼠标划入
     handleOver ({ index }) {
       this.contain.overactive = index;
     },
