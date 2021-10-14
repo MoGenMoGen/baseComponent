@@ -150,10 +150,6 @@ export default {
       this.contain.setScale(this.contain.contentWidth);
     },
     handleBuild () {
-      // if (this.$route.params.id <= 100) {
-      //   this.$message.error('模版例子不能修改')
-      //   return
-      // }
       this.contain.handleInitActive();
       const loading = this.$loading({
         lock: true,
@@ -223,6 +219,7 @@ export default {
         })
       })
     },
+    //导入组件到大屏
     handleAdd (option, first = false) {
       let obj = this.deepClone(option);
       obj.left = 0;

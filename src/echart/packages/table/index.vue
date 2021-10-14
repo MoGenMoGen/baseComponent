@@ -136,9 +136,6 @@ export default create({
     scrollTime () {
       this.setTime();
     },
-    count () {
-      this.setTime();
-    },
     scroll: {
       handler (val) {
         this.setTime();

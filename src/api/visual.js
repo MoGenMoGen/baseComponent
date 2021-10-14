@@ -80,6 +80,22 @@ export const updateObj = (data) => request({
   }
 });
 
+//登录
+export const login = (data) => request({
+  url: '/api/blade-mh/data/login',
+  method: 'post',
+  data: data
+});
+//验证token是否有效
+export const verToken = (account,token) => request({
+  url: '/api/blade-mh/data/verToken',
+  method: 'get',
+  params: {
+    account,token
+  }
+});
+
+
 export const delObj = (id) => request({
   url: '/api/blade-visual/visual/remove',
   method: 'post',
@@ -94,3 +110,74 @@ export const getVal = (mqtt) => request({
     mqtt
   }
 });
+//获取报警数量
+export const getAlertNum = (addr) => request({
+  url: '/api/blade-mh/errlog/alertNum',
+  method: 'get',
+  params: {
+    addr
+  }
+});
+
+//报警列表
+export const getAlertList = () => {
+  return request({
+    url: '/api/blade-mh/errlog/alertList',
+    method: 'get',
+    params: {
+
+    }
+  })
+}
+//消除报警
+export const updAlert = (id) => {
+  return request({
+    url: '/api/blade-mh/errlog/updAlert',
+    method: 'get',
+    params: {
+      id
+    }
+  })
+}
+//修改上下限的值
+export const updAlertVal = (id,val,type) => {
+  return request({
+    url: '/api/blade-mh/site/updVal',
+    method: 'get',
+    params: {
+      id,val,type
+    }
+  })
+}
+//获取能耗
+export const energy = (totalName,names,time) => {
+  return request({
+    url: '/api/blade-mh/data/energy',
+    method: 'get',
+    params: {
+      totalName, names,time
+    }
+  })
+}
+
+
+
+//设备列表
+export const getSiteList = (current, size, name) => {
+  return request({
+    url: '/api/blade-mh/site/apiList',
+    method: 'get',
+    params: {
+      name,
+      current,
+      size,
+    }
+  })
+}
+//车间设备树
+export const getDictTree = () => {
+  return request({
+    url: '/api/blade-system/dict-biz/tree?code=DICT',
+    method: 'get'
+  })
+}

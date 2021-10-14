@@ -4,10 +4,32 @@
     <el-form-item label="开启旋转">
       <avue-switch v-model="main.activeOption.rotate"></avue-switch>
     </el-form-item>
+    <el-form-item label="开启弹窗">
+      <avue-switch v-model="main.activeOption.popup"></avue-switch>
+    </el-form-item>
+    <el-form-item label="弹窗链接" v-if="main.activeOption.popup">
+      <el-input v-model="main.activeOption.popupUrl"></el-input>
+    </el-form-item>
+
+    <el-form-item label="悬浮特效">
+      <avue-switch v-model="main.activeOption.suspension"></avue-switch>
+    </el-form-item>
+
+    <el-form-item label="特效颜色" v-if="main.activeOption.suspension">
+      <avue-input-color v-model="main.activeOption.color"></avue-input-color>
+    </el-form-item>
+
+    <el-form-item label="开启浮窗">
+      <avue-switch v-model="main.activeOption.fc"></avue-switch>
+    </el-form-item>
+    <el-form-item label="浮窗链接" v-if="main.activeOption.fc">
+      <el-input v-model="main.activeOption.fcUrl"></el-input>
+    </el-form-item>
+
+
+
     <el-form-item label="透明度">
-      <el-slider v-model="main.activeOption.opacity"
-                 :max="1"
-                 :step="0.1"></el-slider>
+      <el-slider v-model="main.activeOption.opacity" :max="1"  :step="0.1"></el-slider>
     </el-form-item>
     <template v-if="main.activeOption.rotate">
       <el-form-item label="旋转时间">
@@ -31,7 +53,10 @@
 
 <script>
 export default {
-  inject: ["main"]
+  inject: ["main"],
+  methods:{
+
+  }
 }
 </script>
 

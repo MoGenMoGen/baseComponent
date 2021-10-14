@@ -5,7 +5,7 @@
         <div class="container" :style="styleName" id="container" ref="container">
           <div class="grade" v-if="gradeFlag || contain.config.gradeShow"
                :style="gradeLenStyle"></div>
-          <subgroup ref="subgroup" :nav="contain.list"></subgroup>
+          <subgroup ref="subgroup" :nav="contain.list" ></subgroup>
         </div>
       </div>
     </div>
@@ -193,9 +193,6 @@ export default {
       }
     },
     handleMoveSelectList(left, top, type, postion) {
-
-      console.log(3333333)
-
       this.contain.active.forEach(ele => {
         ele = this.contain.findlist(ele)
         const ele_component = ele.component;

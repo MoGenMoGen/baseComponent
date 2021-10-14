@@ -6,14 +6,9 @@ axios.defaults.validateStatus = function (status) {
   return status >= 200 && status <= 500; // 默认的
 };
 //跨域请求，允许保存cookie
-//let loadingInstance = '';
 axios.defaults.withCredentials = true;
 axios.interceptors.request.use(config => {
-  // loadingInstance = Loading.service({
-  //   text: '拼命加载中',
-  //   background: 'rgba(0,0,0,0.5)',
-  //   spinner: 'el-icon-loading'
-  // });
+
   return config
 }, error => {
   return Promise.reject(error)

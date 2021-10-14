@@ -1,10 +1,8 @@
 <template>
   <div class="index">
     <div class="header">
-      <img src="/img/header.png"
-           alt=""
-           width="100%"
-           height="210px">
+      <img src="/img/header.png"   alt=""  width="100%"  height="100px">
+
       <el-menu class="nav"
                mode="horizontal"
                :default-active="activeName"
@@ -81,7 +79,7 @@ export default {
 </script>
 <style lang="scss">
 .index {
-  height: 100%;
+  height: 800px;
   .header {
     position: relative;
     padding: 0;

@@ -202,7 +202,7 @@ export default (() => {
         },
         mounted() {
             this.init();
-            this.timer = setInterval(this.setVal, 1000);
+            this.timer = setInterval(this.setVal, 3000);
         },
         methods: {
             setVal() {

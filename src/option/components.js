@@ -27,6 +27,14 @@ import datavOption from './components/datav'
 import mainOption from './components/main'
 //自定义组件库
 import testOption from '@/components/test/option'
+import stateOption from '@/components/state/option'
+//线条
+import xlineOption from '@/components/xline/option'
+import alertOption from '@/components/alert/option'
+import alertListOption from '@/components/alertList/option'
+//能耗
+import energyOption from '@/components/energy/option'
+
 
 export default {
   components: {
@@ -54,6 +62,11 @@ export default {
     videoOption,
     wordcloudOption,
     datavOption,
-    testOption
+    testOption,
+    stateOption,
+    xlineOption,
+    alertOption,
+    alertListOption,
+    energyOption
   }
 }

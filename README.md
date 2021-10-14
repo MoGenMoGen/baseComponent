@@ -1,14 +1,13 @@
 # 数据大屏解决方案
 
-## 介绍
-数据大屏解决方案采用vue-cli项目编写，可以完美嵌套与任何项目，此项目只是大屏的解决方案，如果想要用于生产或更多场景的支持需要自己根据情况二次开发,[在线文档](https://www.kancloud.cn/smallwei/avue-doc)。
+## 自定义组件添加方法
+- src,components文件下添加组件文件，参考test
+- base.js 中添加目录
+- components.js下引入组件
+- components下的index.js配置
 
 
-## 3种数据源
-- 在线api（本项目采用了mock拦截方式模拟，具体文件/mock/index.js）
-- 静态数据
-- SQL数据库
-- ...
+
 
 ## 引入其他项目使用
 执行npm run lib 打出对应的包(public/lib)
@@ -17,38 +16,6 @@
 引入相应的文件即可，可以参考public/view.html文件,传入对应的id，打开对应的大屏幕，例如view.html?id=xxxx
 - [例子1](https://data.avuejs.com/view.html?id=5)
 - [例子2](https://data.avuejs.com/view.html?id=8)
-
-## 20+常用组件
-- 图表
-  - 柱状图
-  - 折线图
-  - 饼图
-  - 象形图
-  - 雷达图
-  - 散点图
-  - 漏斗图
-  - 地图
-- 文字
-  - 文本框
-  - 跑马灯
-  - 超链接
-  - 实时时间
-- 媒体
-  - 图片
-  - 图片框
-  - 轮播图
-  - iframe
-  - video
-- 指标
-  - 翻牌器
-  - 环形图
-  - 进度条
-  - 仪表盘
-  - 字符云
-- 表格
-  - 选项卡
-  - 表格
-- ...
 
 ## 自定义组件
 - 组件配置

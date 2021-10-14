@@ -1,5 +1,5 @@
 <template>
-  <el-dialog title="图库"
+  <el-dialog title="模型库"
              width="80%"
              :visible.sync="imgVisible">
     <div style="margin:0 auto;">

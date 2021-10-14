@@ -1,43 +1,111 @@
 <template>
-  <div :class="b()"
-       :style="styleSizeName"
-       @click="handleClick">
-    <img :style="[styleImgName,styleSizeName]"
-         :src="dataChart.value"
-         :class="b({'rotate': rotate})"
-         draggable="false" />
+  <div>
+    <div :class="b()"
+         :style="styleSizeName"
+         @mouseover="mouseover"
+         @mouseout="mouseout"
+         @click="handleClick">
+
+      <div class="imgHover" v-if="show" id="imgHoverId">
+        <iframe :src="url" frameborder="0" height="100%" width="100%"></iframe>
+      </div>
+
+      <div :style="colorStyle">
+        <img
+            :style="[styleImgName,styleSizeName]"
+            :src="dataChart.value"
+            :class="b({'rotate': rotate})"
+            draggable="false"/>
+      </div>
+
+    </div>
+
+
   </div>
+
+
 </template>
 
 <script>
+//  style="filter: drop-shadow(5px -2px 10px #ff0000);"
 import create from "../../create";
+
 export default create({
   name: "img",
   computed: {
-    styleImgName () {
+    styleImgName() {
       return Object.assign(
-        (() => {
-          if (this.rotate) {
-            return {
-              animationDuration: this.duration / 1000 + "s"
-            };
+          (() => {
+            if (this.rotate) {
+              return {
+                animationDuration: this.duration / 1000 + "s"
+              };
+            }
+            return {};
+          })(),
+          {
+            opacity: this.option.opacity || 1
           }
-          return {};
-        })(),
-        {
-          opacity: this.option.opacity || 1
-        }
       );
     },
-    duration () {
+    duration() {
       return this.option.duration || 3000;
     },
-    rotate () {
+    rotate() {
       return this.option.rotate;
     }
   },
+  data() {
+    return {
+      colorStyle: '',
+      url: '',
+      show: false
+    }
+  },
+  mounted() {
+    // this.$nextTick(() => {
+    //   const body = document.querySelector('body')
+    //   console.log(body)
+    //   if (body.append) {
+    //     body.append(this.$el)
+    //   } else {
+    //     body.appendChild(this.$el)
+    //   }
+    // })
+  },
   methods: {
-    handleClick () {
+    //鼠标划入
+    mouseover() {
+      //浮窗
+      if (this.option.fc) {
+
+        this.$parent.$parent.over(this.option.fcUrl,this.$parent.left,this.$parent.top)
+        console.log()
+      }
+      //显示边框颜色
+      console.log(this.option.color)
+      if (this.option.suspension) {
+        if (this.option.color == undefined) {
+          this.colorStyle = "filter: drop-shadow(1px 0px 3px #ff0000)"
+        } else {
+          this.colorStyle = "filter: drop-shadow(1px 0px 3px  " + this.option.color + ")"
+        }
+      }
+    },
+
+    //鼠标划出
+    mouseout() {
+      //去除边框颜色
+      if (this.option.suspension) {
+        this.colorStyle = ""
+        //e.currentTarget.className = "avue-echart-img"
+      }
+      if (this.option.fc) {
+        this.$parent.$parent.leave()
+
+      }
+    },
+    handleClick() {
       this.clickFormatter && this.clickFormatter({
         data: this.dataChart
       });
@@ -45,4 +113,17 @@ export default create({
   }
 });
 </script>
+<style>
+.things {
+  /*filter: drop-shadow(1px 0px 3px #ff0000);*/
+}
 
+.imgHover {
+  position: fixed;
+  height: 200px;
+  width: 300px;
+  margin-left: 120px;
+  top: 30px;
+  z-index: 9999;
+}
+</style>

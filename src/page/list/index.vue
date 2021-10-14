@@ -1,6 +1,6 @@
 <template>
   <el-container class="list">
-    <el-aside width="230px">
+    <el-aside width="120px">
       <el-menu :default-active="activeName"
                background-color="#171b22"
                text-color="#fff"
@@ -11,7 +11,7 @@
                       v-for="item in typelist"
                       @click="getList(item.categoryValue)">
           <i class="el-icon-s-order"></i>
-          {{item.categoryKey}}
+          {{ item.categoryKey }}
         </el-menu-item>
       </el-menu>
 
@@ -44,7 +44,7 @@
           <div class="content__info">
             <img v-if="item.backgroundUrl"
                  :src="item.backgroundUrl"
-                 alt="" />
+                 alt=""/>
             <div class="content__menu"
                  v-show="item._menu">
               <div class="content__btn"
@@ -58,7 +58,7 @@
             </div>
           </div>
           <div class="content__main">
-            <span class="content__name">{{item.title}}</span>
+            <span class="content__name">{{ item.title }}</span>
             <div class="content__menulist">
               <div class="content__view">
                 <el-tooltip content="删除">
@@ -78,10 +78,10 @@
                      @click="handleCopy(item,index)"></i>
                 </el-tooltip>
               </div>
-              <span class="content__status"
-                    :class="{'content__status--active':item.status}">
-                {{item.status?'已发布':'未发布'}}
-              </span>
+<!--              <span class="content__status"-->
+<!--                    :class="{'content__status&#45;&#45;active':item.status}">-->
+<!--                {{ item.status ? '已发布' : '未发布' }}-->
+<!--              </span>-->
             </div>
 
           </div>
@@ -99,11 +99,12 @@
   </el-container>
 </template>
 <script>
-import { getList, addObj, updateObj, delObj, getCategory, copyObj } from '@/api/visual';
-import { getObj } from '@/api/visual'
+import {getList, addObj, updateObj, delObj, getCategory, copyObj} from '@/api/visual';
+import {getObj} from '@/api/visual'
+
 export default {
   name: "list",
-  data () {
+  data() {
     return {
       typelist: [],
       index: 0,
@@ -189,18 +190,18 @@ export default {
       list: [],
     }
   },
-  created () {
+  created() {
     this.getCategory()
   },
   methods: {
-    vaildData (id) {
+    vaildData(id) {
       const list = [];
       for (var i = 0; i < 20; i++) {
         list.push(i)
       }
       return list.includes(id)
     },
-    getCategory () {
+    getCategory() {
       getCategory().then(res => {
         const data = res.data.data;
         this.typelist = data;
@@ -208,7 +209,7 @@ export default {
         this.getList();
       })
     },
-    handleExport (item) {
+    handleExport(item) {
       getObj(item.id).then(res => {
         const data = res.data.data;
         let mode = {
@@ -218,18 +219,13 @@ export default {
         var zip = new window.JSZip();
         zip.file("view.js", `const option =${JSON.stringify(mode, null, 4)}`);
         zip.file('index.html', window.html);
-        zip.generateAsync({ type: "base64" })
-          .then(function (content) {
-            location.href = "data:application/zip;base64," + content;
-          });
+        zip.generateAsync({type: "base64"})
+            .then(function (content) {
+              location.href = "data:application/zip;base64," + content;
+            });
       })
     },
-    handleCopy (item) {
-      this.$message({
-        message: '演示环境不允许复制',
-        type: 'danger'
-      })
-      return
+    handleCopy(item) {
       this.$confirm('确认复制当前大屏', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -243,7 +239,7 @@ export default {
 
       });
     },
-    handleDel (item, index) {
+    handleDel(item, index) {
       this.$confirm('是否确认永久删除?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -261,7 +257,7 @@ export default {
 
       });
     },
-    handleAdd () {
+    handleAdd() {
       this.type = 'add';
       this.findObject(this.option.column, 'status').display = false
       this.findObject(this.option.column, 'width').display = true
@@ -274,7 +270,7 @@ export default {
       this.form.height = 1080;
       this.box = true;
     },
-    handleUpdate (item, index) {
+    handleUpdate(item, index) {
       this.type = 'edit';
       this.findObject(this.option.column, 'status').display = true
       this.findObject(this.option.column, 'width').display = false
@@ -284,19 +280,19 @@ export default {
       this.box = true;
       this.index = index;
     },
-    handleEdit (item) {
+    handleEdit(item) {
       let routeUrl = this.$router.resolve({
         path: '/build/' + item.id
       })
       window.open(routeUrl.href, '_blank');
     },
-    handleViews (item) {
+    handleViews(item) {
       let routeUrl = this.$router.resolve({
         path: '/view/' + item.id
       })
       window.open(routeUrl.href, '_blank');
     },
-    handleSave (form, done) {
+    handleSave(form, done) {
       done();
       if (this.type == 'add') {
         addObj(Object.assign({
@@ -306,7 +302,7 @@ export default {
           this.$message.success('新增成功');
           this.getList();
           const id = res.data.data.id;
-          this.handleEdit({ id })
+          this.handleEdit({id})
         })
       } else {
         // if (this.vaildData(Number(this.index))) {
@@ -326,20 +322,20 @@ export default {
         })
       }
     },
-    handleSelect (key) {
+    handleSelect(key) {
       this.activeName = key;
       this.page.page = 1;
       this.getList();
     },
-    handleCurrentChange (val) {
+    handleCurrentChange(val) {
       this.page.page = val;
       this.getList();
     },
-    handleSizeChange (val) {
+    handleSizeChange(val) {
       this.page.size = val;
       this.getList();
     },
-    getList (category) {
+    getList(category) {
       this.list = []
       getList({
         category: category || this.activeName,
@@ -352,7 +348,7 @@ export default {
         this.initData();
       })
     },
-    initData () {
+    initData() {
       this.list.forEach((ele, index) => {
         this.$set(this.list[index], '_menu', false)
       })

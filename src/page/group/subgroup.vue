@@ -1,6 +1,19 @@
 <template>
   <div>
+    <!--  鼠标划入显示框  -->
+    <div v-if="seen" class="hover_con" :style="positionStyle">
+      <iframe :src="fcUrl" frameborder="0" height="200"  width="300">
+      </iframe>
+    </div>
+
+    <!--  弹窗-->
+    <el-dialog append-to-body :modal="false" :visible.sync="show" width="840px" v-dialogdrag>
+      <iframe :src="popupUrl" frameborder="0" height="700" width="800" id="iframe"></iframe>
+    </el-dialog>
+
+
     <div v-for="item in nav" :key="item.index"
+         @click="clickNav($event,item)"
          @contextmenu.prevent="contain.handleContextMenu && contain.handleContextMenu($event,item)">
       <avue-draggable v-if="!item.children"
                       v-bind="item"
@@ -37,7 +50,7 @@
                    :option="item.option"
                    :home-url="contain.config.url"
                    title=""
-                   :click="handleClick" />
+                   :click="handleClick"/>
       </avue-draggable>
       <subgroup :nav="item.children"></subgroup>
     </div>
@@ -49,13 +62,14 @@
 import components from '@/components/';
 // import { addUrlParam } from '@/utils/utils'
 // import crypto from '@/utils/crypto';
-import { dynamicSql } from '@/api/db'
+import {dynamicSql} from '@/api/db'
 import common from '@/config'
 import echartComponents from '../../echart/'
+
 export default {
   name: 'subgroup',
   inject: ["contain", 'container'],
-  provide () {
+  provide() {
     return {
       contain: this.contain,
       container: this.container
@@ -70,31 +84,67 @@ export default {
       }
     }
   },
-  data () {
+  data() {
     return {
+      popupUrl: '',
+      fcUrl:'',
+      show: false,
+      seen: false,
+      positionStyle: "",
       sqlFormatter: dynamicSql,
       common: common,
     }
   },
-  created () {
-
+  created() {
     Object.keys(echartComponents).map(ele => {
       let component = echartComponents[ele];
       Vue.component(component.name, component);
     });
   },
   methods: {
-    getFunction (fun, def) {
+    //弹窗显示
+    clickNav(e, item) {
+      if (item.option.popup) {
+        this.popupUrl = item.option.popupUrl
+        this.show = true
+        // document.getElementById("iframe").height=0;
+        // document.getElementById("iframe").height=document.getElementById("iframe").contentWindow.document.body.scrollHeight;
+
+      }
+    },
+    //鼠标划入
+    over(url,left,top) {
+      if (url !== undefined){
+        this.fcUrl = url
+        this.seen = true
+        this.positionStyle = {top: top-200 + 'px', left: left+120 + 'px'};
+      }
+
+    },
+    //鼠标划出
+    leave() {
+      this.seen = false
+    },
+    // updateXY(event) {
+    //   this.x = event.pageX;
+    //   this.y = event.pageY;
+    //   this.F = {top: this.y - 100 + 'px', left: this.x + 200 + 'px'};
+    // },
+
+
+    getFunction(fun, def) {
       if (!this.validatenull(fun)) {
         try {
           return eval(fun);
         } catch {
-          return () => { }
+          return () => {
+          }
         }
       }
-      if (def) return () => { }
+      if (def) return () => {
+      }
     },
-    getJson (str) {
+    getJson(str) {
       if (this.validatenull(str)) return {};
       if (typeof str == "string") {
         try {
@@ -106,7 +156,7 @@ export default {
       return str;
     },
     //点击事件交互
-    handleClick ({ type, child, value }) {
+    handleClick({type, child, value}) {
       if (type === 'tabs') {
         const indexList = child.index;
         indexList.forEach((index) => {
@@ -127,22 +177,22 @@ export default {
         })
       }
     },
-    handleRes () {
+    handleRes() {
       return this.$refs[this.common.NAME + this.contain.activeObj.index][0];
     },
     //刷新数据
-    handleRefresh () {
+    handleRefresh() {
       return this.$refs[this.common.NAME + this.contain.activeObj.index][0].updateData();
     },
     //获取对象
-    handleGetObj (val) {
+    handleGetObj(val) {
       return this.$refs[`${this.common.DEAFNAME}${val}`];
     },
     //配置界面鼠标划入
-    handleOver ({ index }) {
+    handleOver({index}) {
       this.contain.overactive = index;
     },
-    handleFocus ({ index }) {
+    handleFocus({index}) {
       this.container.gradeFlag = true;
       if (this.contain.keys.ctrl) {
         if (!Array.isArray(this.contain.active)) {
@@ -153,7 +203,7 @@ export default {
         this.contain.active = [index];
       }
     },
-    handleBlur ({ left, top, width, height }) {
+    handleBlur({left, top, width, height}) {
       if (Array.isArray(this.contain.activeObj)) return
       this.container.gradeFlag = false;
       this.$set(this.contain.activeObj.component, 'width', width)
@@ -164,3 +214,16 @@ export default {
   }
 }
 </script>
+<style>
+.hover_con {
+  position: fixed;
+  height: 200px;
+  width: 300px;
+  z-index: 9999;
+}
+
+.font {
+  list-style: none;
+  color: #FFFFFF;
+}
+</style>

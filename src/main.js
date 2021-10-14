@@ -7,6 +7,7 @@ import router from './router.js';
 import App from './App.vue'
 import './styles/common.scss'
 import { url } from '@/config'
+import * as echarts from 'echarts'
 import '@/mock/'
 //导入主题文件
 import '@/theme/index.js'
@@ -15,6 +16,7 @@ import '@/theme/index.js'
 window.axios = axios;
 Vue.config.productionTip = false
 Vue.prototype.url = url;
+Vue.prototype.$echart = echarts
 Vue.use(window.AVUE, {
   size: 'mini'
 });
