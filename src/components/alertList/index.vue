@@ -1,18 +1,43 @@
 <template>
   <div>
 
-    <el-button type="primary" @click="openDataShow">报警设置</el-button>
-    <dv-scroll-board v-if="show" :config="config" class="table" @click="toRow"/>
+    <!--    <el-button type="primary" @click="openDataShow">报警设置</el-button>-->
+
+    <el-radio-group v-model="query.status" @change="onLoad1" style="margin-bottom: 2px">
+      <el-radio-button label="1">实时</el-radio-button>
+      <el-radio-button label="2">历史</el-radio-button>
+    </el-radio-group>
+
+    <el-input v-model="query.msg" style="width: 200px;margin-left: 10px" placeholder="搜索消息问题"></el-input>
+    <el-input v-model="query.details" style="width: 200px;margin-left: 10px" placeholder="搜索详情"></el-input>
+    <el-button type="primary" @click="onLoad1" style="margin-left: 10px">搜索</el-button>
+    <el-button type="primary" @click="openDataShow" style="margin-left: 10px">报警设置</el-button>
+
+    <el-table :data="list" style="width: 100%" stripe max-height="620" @row-dblclick="dblclick">
+      <el-table-column prop="createTime" label="发生时间" width="220"></el-table-column>
+      <el-table-column prop="msg" label="消息问题" width="220"></el-table-column>
+      <el-table-column prop="details" label="详情"></el-table-column>
+      <el-table-column label="操作" width="100">
+        <template slot-scope="scope">
+          <el-button v-if="scope.row.status == '1'" @click="delAlert(scope.row)" type="text">消除</el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+    <el-pagination
+        background @size-change="sizeChangeHandle1"
+        @current-change="currentChangeHandle1"
+        :current-page="page1.currentPage"
+        :page-size="page1.pageSize"
+        :total="page1.total"
+        layout="prev, pager, next">
+    </el-pagination>
 
 
     <el-dialog title="报警设置" :visible.sync="dataShow" width="30%" append-to-body fullscreen>
-
       <el-input placeholder="请输入设备名称搜索" v-model="name">
         <template slot="prepend">输入设备名称搜索</template>
         <el-button slot="append" icon="el-icon-search" @click="onLoad"></el-button>
       </el-input>
-
-
       <el-table :data="data" style="width: 100%">
         <el-table-column prop="name" label="设备名称"></el-table-column>
         <el-table-column prop="unit" label="单位" width="180"></el-table-column>
@@ -26,8 +51,6 @@
             <el-input v-model="scope.row.lowVal" placeholder="请输入下限警报值" @change="updVal(scope.row,2)"></el-input>
           </template>
         </el-table-column>
-
-
       </el-table>
       <el-pagination
           background @size-change="sizeChangeHandle"
@@ -43,18 +66,25 @@
   </div>
 </template>
 <script>
-import {getAlertList, updAlert, getSiteList,updAlertVal} from '@/api/visual'
+import {getAlertList, updAlert, getSiteList, updAlertVal} from '@/api/visual'
 
 
 export default {
   name: 'alertList',
   data() {
     return {
-      name:'',
+      name: '',
       form: {},
       data: [],
-      query: {},
+      query: {
+        status: '1'
+      },
       page: {
+        pageSize: 20,
+        currentPage: 1,
+        total: 0
+      },
+      page1: {
         pageSize: 20,
         currentPage: 1,
         total: 0
@@ -126,6 +156,14 @@ export default {
   },
 
   methods: {
+
+    dblclick(row) {
+      if (row.addr) {
+        let url = "http://" + window.location.host + '/view/' + row.addr
+        window.location.href = url;
+      }
+    },
+
     openDataShow() {
       this.dataShow = true
       this.onLoad()
@@ -136,19 +174,27 @@ export default {
       this.page.pageSize = val;
       this.onLoad()
     },
-    // 分页, 当前页
     currentChangeHandle(val) {
       this.page.currentPage = val;
       this.onLoad()
     },
 
+    sizeChangeHandle1(val) {
+      this.page1.currentPage = 1;
+      this.page1.pageSize = val;
+      this.onLoad1()
+    },
+    currentChangeHandle1(val) {
+      this.page1.currentPage = val;
+      this.onLoad1()
+    },
 
     updVal(row, type) {
       //上限
       if (type === 1) {
-        updAlertVal(row.id,row.faultVal,type).then(res=>{
+        updAlertVal(row.id, row.faultVal, type).then(res => {
           console.log(res.data.code)
-          if (res.data.code === 200){
+          if (res.data.code === 200) {
             this.$message({
               message: '修改成功',
               type: 'success'
@@ -158,8 +204,8 @@ export default {
       }
       //下限
       if (type === 2) {
-        updAlertVal(row.id,row.lowVal,type).then(res=>{
-          if (res.data.code === 200){
+        updAlertVal(row.id, row.lowVal, type).then(res => {
+          if (res.data.code === 200) {
             this.$message({
               message: '修改成功',
               type: 'success'
@@ -170,72 +216,60 @@ export default {
 
     },
     //点击行
-    toRow(row) {
-      if (row.columnIndex === 5) {
-        //消除报警
-        updAlert(this.list[row.rowIndex].id).then(res => {
-          if (res.data.code === 200) {
-            this.$message({
-              message: '消除成功',
-              type: 'success'
-            });
-            this.show = false
-            this.init()
-          }
-        })
-
-      }else {
-        //跳转页面
-        window.location.href="http://10086sj.jinkworld.com/view/1435859771960881153";
-
-
-      }
-
-    },
-    init() {
-      this.config.data = []
-      getAlertList().then(res => {
-        let data = res.data.data
-        this.list = data
-        for (let i in data) {
-          let myCars = [data[i].createTime, data[i].msg, data[i].addr, data[i].details, "消除"];
-          this.config.data.push(myCars)
+    delAlert(row) {
+      updAlert(row.id, row.siteId).then(res => {
+        if (res.data.code === 200) {
+          this.$message({
+            message: '消除成功',
+            type: 'success'
+          });
+          this.show = false
+          this.onLoad1()
         }
-        this.show = true
       })
     },
-    // searchReset() {
-    //   this.query = {};
-    //   this.onLoad(this.page);
+
+
+    // toRow(row) {
+    //   if (row.columnIndex === 5) {
+    //     //消除报警
+    //     updAlert(this.list[row.rowIndex].id).then(res => {
+    //       if (res.data.code === 200) {
+    //         this.$message({
+    //           message: '消除成功',
+    //           type: 'success'
+    //         });
+    //         this.show = false
+    //         this.init()
+    //       }
+    //     })
+    //   }else {
+    //     //跳转页面
+    //     window.location.href="http://10086sj.jinkworld.com/view/1435859771960881153";
+    //   }
     // },
-    // sizeChange(pageSize){
-    //   this.page.pageSize = pageSize;
-    // },
-    // currentChange(currentPage){
-    //   this.page.currentPage = currentPage;
-    // },
-    // searchChange(params, done) {
-    //   this.query = params;
-    //   this.page.currentPage = 1;
-    //   this.onLoad(this.page, params);
-    // },
-    // refreshChange() {
-    //   this.onLoad(this.page, this.query);
-    // },
+
+    init() {
+      this.onLoad1()
+    },
     onLoad() {
       this.loading = true;
-      getSiteList(this.page.currentPage, this.pageSize, this.name ).then(res => {
+      getSiteList(this.page.currentPage, this.page.pageSize, this.name).then(res => {
         const data = res.data.data;
         this.page.total = data.total;
         this.data = data.records;
         this.loading = false;
       });
-      // axios.get(this.apiUrl + 'blade-mh/site/apiList?current=' + page.currentPage + '&size=' + page.pageSize + '&name=' + params.name ).then(res => (
-      //     this.page.total = res.data.data.total,
-      //         this.data = res.data.data.records
-      // ))
-
+    },
+    onLoad1() {
+      getAlertList(this.page1.currentPage, this.page1.pageSize, this.query).then(res => {
+        const data = res.data.data;
+        this.page1.total = data.total;
+        this.list = data.records;
+        // this.show = true
+      })
     }
+
 
   }
 }
@@ -247,4 +281,16 @@ export default {
   height: 900px;
 }
 
+.el-table th, .el-table tr, .el-table, .el-table__expanded-cell {
+  background-color: #003B51 !important;
+  color: #ffffff !important;
+}
+
+.el-table--striped .el-table__body tr.el-table__row--striped td {
+  background: #0A2732;
+}
+
+.el-table tbody tr:hover > td {
+  background-color: #676565 !important
+}
 </style>

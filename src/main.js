@@ -11,7 +11,7 @@ import * as echarts from 'echarts'
 import '@/mock/'
 //导入主题文件
 import '@/theme/index.js'
-
+import 'echarts-liquidfill'
 
 window.axios = axios;
 Vue.config.productionTip = false

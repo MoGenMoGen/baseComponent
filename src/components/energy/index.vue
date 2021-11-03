@@ -1,19 +1,22 @@
 <!--能耗统计-->
 <template>
-  <div >
-    <div style="text-align: center">
+  <div>
+    <div style="text-align: left;margin-left: 70px">
 
-      <el-select v-model="value" placeholder="请选择" size="mini" @change="changeSelect">
-        <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-        </el-option>
-      </el-select>
-      <el-date-picker size="mini" v-if="value === '自定义'" @change="changeTime"
-                      style="margin-left: 20px"
-                      v-model="value1"
+<!--      <avue-select size="mini"  @change="changeSelect"  v-model="value" placeholder="请选择内容" type="tree" :dic="dic"></avue-select>-->
+      <el-radio-group v-model="value"   @change="changeSelect" >
+        <el-radio-button label="累计"></el-radio-button>
+        <el-radio-button label="日"></el-radio-button>
+        <el-radio-button label="周"></el-radio-button>
+        <el-radio-button label="月"></el-radio-button>
+        <el-radio-button label="年"></el-radio-button>
+        <el-radio-button label="自定义"></el-radio-button>
+      </el-radio-group>
+
+
+      <el-date-picker  v-if="value === '自定义'" @change="changeTime"
+                      style="margin-left: 20px;margin-top: 2px"
+                      v-model="value1" size="medium"
                       type="datetimerange"
                       range-separator="至" value-format="yyyy-MM-dd HH:mm:ss"
                       start-placeholder="开始日期"
@@ -24,23 +27,25 @@
 
     <el-row :gutter="20" style="margin-top: 10px">
       <el-col :span="8" style="text-align: center">
-          <div style="height: 180px;">
-            <img src="./ydl.png" alt="">
-            <span style="position: absolute;left: 160px;font-size: 30px;color: rgba(36, 247, 240, 1);top: 10px">用电量统计</span>
-            <span style="position: absolute;left: 200px;font-size: 22px;color: rgb(255,255,255);top: 70px">总用电量统计</span>
-            <span style="position: absolute;left: 280px;font-size: 22px;color: rgb(255,255,255);top: 120px">{{ total1 }} KWH</span>
-          </div>
-          <div>
-            <div id="myChart1" :style="{width: '600px', height: '700px'}"></div>
-          </div>
+        <div style="height: 180px;">
+          <img src="./ydl.png" alt="">
+          <span
+              style="position: absolute;left: 160px;font-size: 30px;color: rgba(36, 247, 240, 1);top: 10px">用电量统计</span>
+          <span style="position: absolute;left: 200px;font-size: 22px;color: rgb(255,255,255);top: 70px">{{setValue()}}用电量统计</span>
+          <span style="position: absolute;left: 280px;font-size: 22px;color: rgb(255,255,255);top: 120px">{{ total1 }} KWH</span>
+        </div>
+        <div>
+          <div id="myChart1" :style="{width: '600px', height: '700px'}"></div>
+        </div>
       </el-col>
 
 
       <el-col :span="8" style="text-align: center">
         <div style="height: 180px">
           <img src="./ysl.png" alt="">
-          <span style="position: absolute;left: 710px;font-size: 30px;color: rgba(36, 247, 240, 1);top: 10px">用水量统计</span>
-          <span style="position: absolute;left: 760px;font-size: 22px;color: rgb(255,255,255);top: 70px">总用水量统计</span>
+          <span
+              style="position: absolute;left: 710px;font-size: 30px;color: rgba(36, 247, 240, 1);top: 10px">用水量统计</span>
+          <span style="position: absolute;left: 760px;font-size: 22px;color: rgb(255,255,255);top: 70px">{{setValue()}}用水量统计</span>
           <span style="position: absolute;left: 840px;font-size: 22px;color: rgb(255,255,255);top: 120px">{{ total2 }} m³</span>
         </div>
         <div id="myChart2" :style="{width: '600px', height: '700px'}"></div>
@@ -50,8 +55,9 @@
       <el-col :span="8" style="text-align: center">
         <div style="height: 180px">
           <img src="./yql.png" alt="">
-          <span style="position: absolute;left: 1270px;font-size: 30px;color: rgba(36, 247, 240, 1);top: 10px">用气量统计</span>
-          <span style="position: absolute;left: 1330px;font-size: 22px;color: rgb(255,255,255);top: 70px">总用气量统计</span>
+          <span
+              style="position: absolute;left: 1270px;font-size: 30px;color: rgba(36, 247, 240, 1);top: 10px">用气量统计</span>
+          <span style="position: absolute;left: 1330px;font-size: 22px;color: rgb(255,255,255);top: 70px">{{setValue()}}用气量统计</span>
           <span style="position: absolute;left: 1410px;font-size: 22px;color: rgb(255,255,255);top: 120px">{{ total3 }} m³</span>
         </div>
         <div id="myChart3" :style="{width: '600px', height: '700px'}"></div>
@@ -62,21 +68,40 @@
 </template>
 <script>
 import {energy} from '@/api/visual'
+
 export default {
   data() {
     return {
-      total1:'',
-      total2:'',
-      total3:'',
-      options: [{
-        value: '累计',
-        label: '累计'
+      dic: [{
+        label: '累计',
+        desc: '累计',
+        value: '累计'
       }, {
-        value: '自定义',
-        label: '自定义'
+        label: '日',
+        desc: '按天统计',
+        value: '日'
+      }, {
+        label: '周',
+        desc: '按周统计',
+        value: '周'
+      }, {
+        label: '月',
+        desc: '按月统计',
+        value: '月'
+      }, {
+        label: '年',
+        desc: '按年统计',
+        value: '年'
+      }, {
+        label: '自定义',
+        desc: '自定义时间',
+        value: '自定义'
       }],
+      total1: '',
+      total2: '',
+      total3: '',
       value: '累计',
-      value1:''
+      value1: ''
     }
   },
   name: 'energy',
@@ -84,25 +109,29 @@ export default {
     option: Object,
     component: Object
   },
-  mounted(){
+  mounted() {
     this.drawLine1("累计");
     this.drawLine2("累计");
     this.drawLine3("累计");
   },
-  computed: {
-
-  },
+  computed: {},
   methods: {
-    changeSelect(row){
-      if (row == "累计"){
-        console.log(123123)
-        this.drawLine1("累计");
-        this.drawLine2("累计");
-        this.drawLine3("累计");
+    setValue(){
+      if (this.value === '累计' || this.value === '自定义'){
+        return this.value
+      }else {
+        return '当' + this.value
       }
-      console.log(row)
     },
-    changeTime(row){
+
+    changeSelect(row) {
+      if (row != "自定义") {
+        this.drawLine1(row);
+        this.drawLine2(row);
+        this.drawLine3(row);
+      }
+    },
+    changeTime(row) {
       this.drawLine1(row.toString());
       this.drawLine2(row.toString());
       this.drawLine3(row.toString());
@@ -110,8 +139,8 @@ export default {
 
 
     //用电量
-    drawLine1(time){
-      energy(this.option.ydlzl,this.option.ydl,time).then(res=>{
+    drawLine1(time) {
+      energy(this.option.ydlzl, this.option.ydl, time).then(res => {
         let data = res.data.data.list
         this.total1 = res.data.data.total
         let myChart = this.$echart.init(document.getElementById('myChart1'))
@@ -140,7 +169,7 @@ export default {
               top: '-250px',
               radius: '50%',
               label: {
-                show:false,
+                show: false,
                 color: '#fff'
               },
               data: res.data.data.list,
@@ -150,8 +179,8 @@ export default {
       })
     },
     //用水量
-    drawLine2(time){
-      energy(this.option.yslzl,this.option.ysl,time).then(res=>{
+    drawLine2(time) {
+      energy(this.option.yslzl, this.option.ysl, time).then(res => {
         let data = res.data.data.list
         this.total2 = res.data.data.total
         let myChart = this.$echart.init(document.getElementById('myChart2'))
@@ -180,7 +209,7 @@ export default {
               top: '-250px',
               radius: '50%',
               label: {
-                show:false,
+                show: false,
                 color: '#fff'
               },
               data: res.data.data.list,
@@ -190,8 +219,8 @@ export default {
       })
     },
     //燃气量
-    drawLine3(time){
-      energy(this.option.yqlzl,this.option.yql,time).then(res=>{
+    drawLine3(time) {
+      energy(this.option.yqlzl, this.option.yql, time).then(res => {
         let data = res.data.data.list
         this.total3 = res.data.data.total
         let myChart = this.$echart.init(document.getElementById('myChart3'))
@@ -220,7 +249,7 @@ export default {
               top: '-250px',
               radius: '50%',
               label: {
-                show:false,
+                show: false,
                 color: '#fff'
               },
               data: res.data.data.list,
@@ -233,8 +262,15 @@ export default {
 }
 </script>
 <style>
-.el-range-editor.el-input__inner{
-  background-color: black;
+.el-range-editor.el-input__inner {
+  /*background-color: black;*/
 }
-
+.el-checkbox__inner, input, .el-slider__runway, textarea, .el-dialog input, .el-switch__core, .el-dialog .el-slider__runway, .el-dialog textarea{
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #282e3a !important;
+}
+.el-select-dropdown__item {
+  color: white;
+}
 </style>

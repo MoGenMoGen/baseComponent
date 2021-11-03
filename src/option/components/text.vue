@@ -4,6 +4,11 @@
     <el-form-item label="文本内容">
       <avue-input v-model="main.activeObj.data.value"></avue-input>
     </el-form-item>
+
+    <el-form-item label="后缀内容">
+      <avue-input v-model="main.activeObj.data.hz"></avue-input>
+    </el-form-item>
+
     <el-form-item label="字体大小">
       <avue-input-number v-model="main.activeOption.fontSize"
                          :max="200"></avue-input-number>

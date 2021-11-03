@@ -6,9 +6,9 @@
       </iframe>
     </div>
 
-    <!--  弹窗-->
-    <el-dialog append-to-body :modal="false" :visible.sync="show" width="840px" v-dialogdrag>
-      <iframe :src="popupUrl" frameborder="0" height="700" width="800" id="iframe"></iframe>
+    <!--  弹窗 popupWidth -->
+    <el-dialog append-to-body :modal="false" :visible.sync="show" :width="popupWidth" v-dialogdrag>
+      <iframe  :src="popupUrl" scrolling="no" frameborder="0" :height="height" :width="width" id="iframe"></iframe>
     </el-dialog>
 
 
@@ -87,6 +87,9 @@ export default {
   data() {
     return {
       popupUrl: '',
+      height:'460',
+      width:'800',
+      popupWidth:'820px',
       fcUrl:'',
       show: false,
       seen: false,
@@ -104,11 +107,41 @@ export default {
   methods: {
     //弹窗显示
     clickNav(e, item) {
+
+
       if (item.option.popup) {
         this.popupUrl = item.option.popupUrl
+        if (item.option.popupH){
+            this.height = item.option.popupH
+        }else {
+          this.height = "460"
+        }
+        if (item.option.popupW){
+          this.width = item.option.popupW
+        }else {
+          this.width = "800"
+        }
+
+        console.log(this.popupWidth)
+        this.popupWidth =(Number(this.width) + Number(20))  +'px'
         this.show = true
-        // document.getElementById("iframe").height=0;
-        // document.getElementById("iframe").height=document.getElementById("iframe").contentWindow.document.body.scrollHeight;
+
+
+        // setTimeout(() => {
+        //   let contentWindow = document.getElementById("iframe").contentWindow;
+        //   let className = contentWindow.document.getElementsByClassName("content");
+        //    console.log(className)
+        //    //console.log(contentWindow.document.getElementsByClassName("content")[0])
+        //   //.document.getElementsByClassName("")
+        //
+        //   // this.width = contentWindow.innerWidth
+        //   // this.height = contentWindow.innerHeight
+        //   // this.popupWidth = Number(this.width) + Number(20) +'px'
+        //   // console.log(this.width)
+        //   // console.log(this.height)
+        //   // console.log(contentWindow.innerHeight)
+        //   // console.log(contentWindow.innerWidth)
+        // }, 1000)
 
       }
     },
@@ -125,11 +158,7 @@ export default {
     leave() {
       this.seen = false
     },
-    // updateXY(event) {
-    //   this.x = event.pageX;
-    //   this.y = event.pageY;
-    //   this.F = {top: this.y - 100 + 'px', left: this.x + 200 + 'px'};
-    // },
+
 
 
     getFunction(fun, def) {
@@ -215,13 +244,25 @@ export default {
 }
 </script>
 <style>
+.el-dialog__body {
+  padding: 10px 10px;
+}
+.el-dialog__headerbtn .el-dialog__close {
+  color: #ffffff;
+}
+.el-dialog__headerbtn {
+  top: 8px;
+}
+
 .hover_con {
   position: fixed;
   height: 200px;
   width: 300px;
   z-index: 9999;
 }
-
+.el-dialog__header {
+  padding: 0px 20px 20px;
+}
 .font {
   list-style: none;
   color: #FFFFFF;

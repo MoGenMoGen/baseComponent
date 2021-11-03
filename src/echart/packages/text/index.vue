@@ -8,7 +8,7 @@
          :class="b('text')"
          :href="linkHref"
          :style="[styleName,styleSizeName]"
-         :target="linkTarget">{{dataChart.value}}</a>
+         :target="linkTarget">{{dataChart.value}} {{dataChart.hz}}</a>
     </div>
 
   </div>

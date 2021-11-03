@@ -5,7 +5,7 @@
          @mouseover="mouseover"
          @mouseout="mouseout"
          @click="handleClick">
-
+<!--  浮窗   -->
       <div class="imgHover" v-if="show" id="imgHoverId">
         <iframe :src="url" frameborder="0" height="100%" width="100%"></iframe>
       </div>
@@ -78,12 +78,9 @@ export default create({
     mouseover() {
       //浮窗
       if (this.option.fc) {
-
-        this.$parent.$parent.over(this.option.fcUrl,this.$parent.left,this.$parent.top)
-        console.log()
+        this.$parent.$parent.over(this.option.fcUrl,this.$parent.left,this.$parent.top+80)
       }
       //显示边框颜色
-      console.log(this.option.color)
       if (this.option.suspension) {
         if (this.option.color == undefined) {
           this.colorStyle = "filter: drop-shadow(1px 0px 3px #ff0000)"
@@ -106,6 +103,12 @@ export default create({
       }
     },
     handleClick() {
+      //有跳转连接 跳转
+      if (this.option.tzUrl){
+        window.location.href=this.option.tzUrl
+      }
+
+      //console.log(this.option.tzUrl)
       this.clickFormatter && this.clickFormatter({
         data: this.dataChart
       });
@@ -122,8 +125,8 @@ export default create({
   position: fixed;
   height: 200px;
   width: 300px;
-  margin-left: 120px;
-  top: 30px;
+  margin-left: 80px;
+  top: 50px;
   z-index: 9999;
 }
 </style>

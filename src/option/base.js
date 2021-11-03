@@ -75,8 +75,8 @@ export default [{
             "dataFormatter": "",
             "stylesFormatter": "",
             "component": {
-                "width": 800,
-                "height": 500,
+                "width": 80,
+                "height": 80,
                 "name": "state",
                 "prop": "state",
             },
@@ -121,6 +121,50 @@ export default [{
                     "height": 500,
                     "name": "energy",
                     "prop": "energy",
+                },
+                "option": {
+
+                }
+            }
+        },
+
+
+        {
+            label: '液位',
+            option: {
+                "name": "液位",
+                "title": "液位",
+                "icon": 'icon-bar',
+                "img": require('@/assets/text4.png'),
+                "data": [],
+                "dataFormatter": "",
+                "stylesFormatter": "",
+                "component": {
+                    "width": 100,
+                    "height": 100,
+                    "name": "level",
+                    "prop": "level",
+                },
+                "option": {
+
+                }
+            }
+        },
+        {
+            label: '移动',
+            option: {
+                "name": "移动",
+                "title": "移动",
+                "icon": 'icon-bar',
+                "img": require('@/assets/text4.png'),
+                "data": [],
+                "dataFormatter": "",
+                "stylesFormatter": "",
+                "component": {
+                    "width": 400,
+                    "height": 400,
+                    "name": "moveCar",
+                    "prop": "moveCar",
                 },
                 "option": {
 

@@ -34,8 +34,10 @@ import alertOption from '@/components/alert/option'
 import alertListOption from '@/components/alertList/option'
 //能耗
 import energyOption from '@/components/energy/option'
-
-
+//液位
+import levelOption from '@/components/level/option'
+//移动
+import moveCarOption from '@/components/moveCar/option'
 export default {
   components: {
     commonOption,
@@ -67,6 +69,7 @@ export default {
     xlineOption,
     alertOption,
     alertListOption,
-    energyOption
+    energyOption,
+    levelOption,moveCarOption
   }
 }

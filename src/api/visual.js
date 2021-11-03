@@ -120,22 +120,24 @@ export const getAlertNum = (addr) => request({
 });
 
 //报警列表
-export const getAlertList = () => {
+export const getAlertList = (current, size, params) => {
   return request({
     url: '/api/blade-mh/errlog/alertList',
     method: 'get',
     params: {
-
+      ...params,
+      current,
+      size,
     }
   })
 }
 //消除报警
-export const updAlert = (id) => {
+export const updAlert = (id,siteId) => {
   return request({
     url: '/api/blade-mh/errlog/updAlert',
     method: 'get',
     params: {
-      id
+      id,siteId
     }
   })
 }

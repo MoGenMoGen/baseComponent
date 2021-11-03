@@ -42,7 +42,7 @@ export default {
   methods: {
     //是否显示
     getInfo() {
-      console.log(this.option)
+      //console.log(this.option)
       if (this.option.addr) {
         getVal(this.option.addr).then(res => {
           let data = res.data;

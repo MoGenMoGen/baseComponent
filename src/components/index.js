@@ -8,6 +8,8 @@ import Xline from './xline/';
 import Alert from './alert/';
 import alertList from './alertList/';
 import energy from './energy/';
+import level from './level/'
+import moveCar from './moveCar/'
 
 
 import $Echart from '../echart/common';
@@ -15,7 +17,7 @@ import { KEY_COMPONENT_NAME } from '../echart/variable';
 
 export default (() => {
   const list = [
-    Test,State,Xline,Alert,alertList,energy
+    Test,State,Xline,Alert,alertList,energy,level,moveCar
   ]
   let result = {}
   //循环注册组件

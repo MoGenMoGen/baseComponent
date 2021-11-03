@@ -4,12 +4,29 @@
     <el-form-item label="开启旋转">
       <avue-switch v-model="main.activeOption.rotate"></avue-switch>
     </el-form-item>
+
+
     <el-form-item label="开启弹窗">
       <avue-switch v-model="main.activeOption.popup"></avue-switch>
     </el-form-item>
+
+    <el-form-item label="弹窗高度" v-if="main.activeOption.popup">
+      <el-input v-model="main.activeOption.popupH"></el-input>
+    </el-form-item>
+    <el-form-item label="弹窗宽度" v-if="main.activeOption.popup">
+      <el-input v-model="main.activeOption.popupW"></el-input>
+    </el-form-item>
+
+
     <el-form-item label="弹窗链接" v-if="main.activeOption.popup">
       <el-input v-model="main.activeOption.popupUrl"></el-input>
     </el-form-item>
+
+    <el-form-item label="跳转连接">
+      <el-input v-model="main.activeOption.tzUrl"></el-input>
+    </el-form-item>
+
+
 
     <el-form-item label="悬浮特效">
       <avue-switch v-model="main.activeOption.suspension"></avue-switch>

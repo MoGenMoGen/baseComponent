@@ -1,6 +1,6 @@
 <template>
   <div class="login-container"  >
-    <span>123</span>
+<!--    <span>123</span>-->
   </div>
 <!--  <div>-->
 <!--    <avue-login :option="option" @submit="submit"></avue-login>-->

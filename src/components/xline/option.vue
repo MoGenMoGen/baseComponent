@@ -70,7 +70,7 @@ export default {
       if (this.main.activeOption.color === undefined){
         this.main.activeOption.color = "#FFFFFF"
       }
-      console.log(this.main.activeOption.speed)
+      //console.log(this.main.activeOption.speed)
     },
 
 
@@ -87,7 +87,7 @@ export default {
 
     },
     touchmove(e) {
-      console.log(e)
+      //console.log(e)
     }
   }
 }

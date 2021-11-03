@@ -15,7 +15,7 @@ export default create({
   name: "state",
   computed: {
     styleImgName () {
-      console.log(11111111111111111)
+      //console.log(11111111111111111)
       return Object.assign(
         (() => {
           if (this.rotate) {

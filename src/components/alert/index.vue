@@ -34,7 +34,6 @@ export default {
       }
     },
     init(){
-      console.log(this.option)
       if (this.option.device != undefined){
         getAlertNum(this.option.device).then(res=>{
           this.num = res.data.data
