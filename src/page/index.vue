@@ -79,7 +79,9 @@ export default {
 </script>
 <style lang="scss">
 .index {
-  height: 800px;
+  height: 100%;
+  min-height: 800px;
+  background-color: #171b22;
   .header {
     position: relative;
     padding: 0;

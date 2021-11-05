@@ -108,7 +108,6 @@ export default {
     //弹窗显示
     clickNav(e, item) {
 
-
       if (item.option.popup) {
         this.popupUrl = item.option.popupUrl
         if (item.option.popupH){
@@ -245,7 +244,7 @@ export default {
 </script>
 <style>
 .el-dialog__body {
-  padding: 10px 10px;
+  padding: 0;
 }
 .el-dialog__headerbtn .el-dialog__close {
   color: #ffffff;
@@ -266,5 +265,28 @@ export default {
 .font {
   list-style: none;
   color: #FFFFFF;
+}
+.avue-group__item, .el-dialog, .el-message-box{
+  background: transparent;
+}
+.el-dialog{
+  box-shadow: none;
+}
+.el-dialog__header{
+  padding: 0;
+}
+.el-dialog__headerbtn{
+  top:8px;
+  right:35px
+}
+body{
+  /*background: transparent;*/
+}
+.content{
+  /*background-color: transparent !important;*/
+}
+  /*.dialog body{background: transparent}*/
+.dialog .build .middle{
+  /*background-color: transparent !important;*/
 }
 </style>

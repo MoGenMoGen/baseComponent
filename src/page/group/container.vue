@@ -64,7 +64,8 @@ export default {
       }, (() => {
         if (this.contain.config.backgroundImage) {
           return {
-            background: `url(${this.contain.config.backgroundImage}) 0% 0% / 100% 100% rgb(3, 12, 59)`,
+            // background: `url(${this.contain.config.backgroundImage}) 0% 0% / 100% 100% rgb(3, 12, 59)`,
+              background: `url(${this.contain.config.backgroundImage}) 0% 0% / 100% 100% `,
           }
         }
         return
@@ -251,4 +252,14 @@ export default {
 </script>
 
 <style>
+  body{
+    background: transparent;
+
+  }
+   .content{
+     background-color: transparent !important;
+  }
+   .middle{
+     background-color: transparent !important;
+  }
 </style>

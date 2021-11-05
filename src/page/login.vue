@@ -74,4 +74,9 @@ export default {
 </script>
 <style lang="scss">
 @import "../styles/style.scss";
+  .login-container{
+    width: 100%;
+    height: 100%;
+    background: #171b22;
+  }
 </style>
