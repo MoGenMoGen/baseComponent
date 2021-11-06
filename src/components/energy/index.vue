@@ -31,8 +31,8 @@
           <img src="./ydl.png" alt="">
           <span
               style="position: absolute;left: 160px;font-size: 30px;color: rgba(36, 247, 240, 1);top: 10px">用电量统计</span>
-          <span style="position: absolute;left: 200px;font-size: 22px;color: rgb(255,255,255);top: 70px">{{setValue()}}用电量统计</span>
-          <span style="position: absolute;left: 280px;font-size: 22px;color: rgb(255,255,255);top: 120px">{{ total1 }} KWH</span>
+          <span style="position: absolute;left: 160px;font-size: 22px;color: rgb(255,255,255);top: 70px">{{setValue()}}用电量统计</span>
+          <span style="position: absolute;left: 160px;font-size: 22px;color: rgb(255,255,255);top: 120px">{{ total1 }} KWH</span>
         </div>
         <div>
           <div id="myChart1" :style="{width: '600px', height: '700px'}"></div>
@@ -44,9 +44,9 @@
         <div style="height: 180px">
           <img src="./ysl.png" alt="">
           <span
-              style="position: absolute;left: 710px;font-size: 30px;color: rgba(36, 247, 240, 1);top: 10px">用水量统计</span>
-          <span style="position: absolute;left: 760px;font-size: 22px;color: rgb(255,255,255);top: 70px">{{setValue()}}用水量统计</span>
-          <span style="position: absolute;left: 840px;font-size: 22px;color: rgb(255,255,255);top: 120px">{{ total2 }} m³</span>
+              style="position: absolute;left: 720px;font-size: 30px;color: rgba(36, 247, 240, 1);top: 10px">用水量统计</span>
+          <span style="position: absolute;left: 720px;font-size: 22px;color: rgb(255,255,255);top: 70px">{{setValue()}}用水量统计</span>
+          <span style="position: absolute;left: 720px;font-size: 22px;color: rgb(255,255,255);top: 120px">{{ total2 }} m³</span>
         </div>
         <div id="myChart2" :style="{width: '600px', height: '700px'}"></div>
       </el-col>
@@ -56,9 +56,9 @@
         <div style="height: 180px">
           <img src="./yql.png" alt="">
           <span
-              style="position: absolute;left: 1270px;font-size: 30px;color: rgba(36, 247, 240, 1);top: 10px">用气量统计</span>
-          <span style="position: absolute;left: 1330px;font-size: 22px;color: rgb(255,255,255);top: 70px">{{setValue()}}用气量统计</span>
-          <span style="position: absolute;left: 1410px;font-size: 22px;color: rgb(255,255,255);top: 120px">{{ total3 }} m³</span>
+              style="position: absolute;left: 1280px;font-size: 30px;color: rgba(36, 247, 240, 1);top: 10px">用气量统计</span>
+          <span style="position: absolute;left: 1280px;font-size: 22px;color: rgb(255,255,255);top: 70px">{{setValue()}}用气量统计</span>
+          <span style="position: absolute;left: 1280px;font-size: 22px;color: rgb(255,255,255);top: 120px">{{ total3 }} m³</span>
         </div>
         <div id="myChart3" :style="{width: '600px', height: '700px'}"></div>
 
