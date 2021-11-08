@@ -7,8 +7,8 @@
     </div>
 
     <!--  弹窗 popupWidth -->
-    <el-dialog append-to-body :modal="false" :visible.sync="show" :width="popupWidth" v-dialogdrag>
-      <iframe  :src="popupUrl" scrolling="no" frameborder="0" :height="height" :width="width" id="iframe"></iframe>
+    <el-dialog custom-class="dialog" append-to-body :modal="false" :visible.sync="show" :width="popupWidth" v-dialogdrag>
+      <iframe  :src="popupUrl" scrolling="no" frameborder="0"  :height="height" :width="width" id="iframe"></iframe>
     </el-dialog>
 
 
@@ -122,7 +122,8 @@ export default {
         }
 
         console.log(this.popupWidth)
-        this.popupWidth =(Number(this.width) + Number(20))  +'px'
+        this.popupWidth =(Number(this.width) + Number(18))  +'px'
+          // this.popupWidth =(Number(this.width))  +'px'
         this.show = true
 
 
@@ -242,16 +243,31 @@ export default {
   }
 }
 </script>
-<style>
-.el-dialog__body {
-  padding: 0;
-}
-.el-dialog__headerbtn .el-dialog__close {
-  color: #ffffff;
-}
-.el-dialog__headerbtn {
-  top: 8px;
-}
+<style lang="scss">
+  .dialog {
+    overflow: hidden;
+    box-shadow: none;
+    .el-dialog__body {
+      padding:14px 4px 10px 14px;  /*右边多出来10像素，下面多出来4像素，需要减掉*/
+      background: rgba(9,31,55,0.75);
+      border-radius: 10px;
+    }
+    .el-dialog__headerbtn .el-dialog__close {
+      color: #ffffff;
+
+    }
+    .el-dialog__headerbtn {
+      top: 8px;
+      right:10px
+    }
+    .el-dialog__header {
+      padding: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
 
 .hover_con {
   position: fixed;
@@ -259,25 +275,13 @@ export default {
   width: 300px;
   z-index: 9999;
 }
-.el-dialog__header {
-  padding: 0px 20px 20px;
-}
+
 .font {
   list-style: none;
   color: #FFFFFF;
 }
 .avue-group__item, .el-dialog, .el-message-box{
   background: transparent;
-}
-.el-dialog{
-  box-shadow: none;
-}
-.el-dialog__header{
-  padding: 0;
-}
-.el-dialog__headerbtn{
-  top:8px;
-  right:35px
 }
 body{
   /*background: transparent;*/

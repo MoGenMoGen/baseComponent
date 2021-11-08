@@ -296,6 +296,7 @@
 }
 .views{
   overflow-y: scroll;
+  overflow-x: hidden;
   .middle{
     overflow: inherit;
   }

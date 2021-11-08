@@ -4,7 +4,7 @@
     <div style="text-align: left;margin-left: 70px">
 
 <!--      <avue-select size="mini"  @change="changeSelect"  v-model="value" placeholder="请选择内容" type="tree" :dic="dic"></avue-select>-->
-      <el-radio-group v-model="value"   @change="changeSelect" >
+      <el-radio-group v-model="value"   @change="changeSelect" fill="#139a95" text-color="">
         <el-radio-button label="累计"></el-radio-button>
         <el-radio-button label="日"></el-radio-button>
         <el-radio-button label="周"></el-radio-button>
@@ -25,14 +25,14 @@
     </div>
 
 
-    <el-row :gutter="20" style="margin-top: 10px">
+    <el-row :gutter="20" style="margin-top: 30px">
       <el-col :span="8" style="text-align: center">
         <div style="height: 180px;">
           <img src="./ydl.png" alt="">
           <span
-              style="position: absolute;left: 160px;font-size: 30px;color: rgba(36, 247, 240, 1);top: 10px">用电量统计</span>
-          <span style="position: absolute;left: 200px;font-size: 22px;color: rgb(255,255,255);top: 70px">{{setValue()}}用电量统计</span>
-          <span style="position: absolute;left: 280px;font-size: 22px;color: rgb(255,255,255);top: 120px">{{ total1 }} KWH</span>
+              style="position: absolute;left: 170px;font-size: 28px;color: rgba(36, 247, 240, 1);top: 10px">用电量统计</span>
+          <span style="position: absolute;left: 170px;font-size: 22px;color: rgb(255,255,255);top: 67px">{{setValue()}}用电量统计</span>
+          <span style="position: absolute;left: 170px;font-size: 22px;color: rgb(255,255,255);top: 112px">{{ total1 }} KWH</span>
         </div>
         <div>
           <div id="myChart1" :style="{width: '600px', height: '700px'}"></div>
@@ -44,9 +44,9 @@
         <div style="height: 180px">
           <img src="./ysl.png" alt="">
           <span
-              style="position: absolute;left: 710px;font-size: 30px;color: rgba(36, 247, 240, 1);top: 10px">用水量统计</span>
-          <span style="position: absolute;left: 760px;font-size: 22px;color: rgb(255,255,255);top: 70px">{{setValue()}}用水量统计</span>
-          <span style="position: absolute;left: 840px;font-size: 22px;color: rgb(255,255,255);top: 120px">{{ total2 }} m³</span>
+              style="position: absolute;left: 730px;font-size: 28px;color: rgba(36, 247, 240, 1);top: 10px">用水量统计</span>
+          <span style="position: absolute;left: 730px;font-size: 22px;color: rgb(255,255,255);top: 67px">{{setValue()}}用水量统计</span>
+          <span style="position: absolute;left: 730px;font-size: 22px;color: rgb(255,255,255);top: 112px">{{ total2 }} m³</span>
         </div>
         <div id="myChart2" :style="{width: '600px', height: '700px'}"></div>
       </el-col>
@@ -56,9 +56,9 @@
         <div style="height: 180px">
           <img src="./yql.png" alt="">
           <span
-              style="position: absolute;left: 1270px;font-size: 30px;color: rgba(36, 247, 240, 1);top: 10px">用气量统计</span>
-          <span style="position: absolute;left: 1330px;font-size: 22px;color: rgb(255,255,255);top: 70px">{{setValue()}}用气量统计</span>
-          <span style="position: absolute;left: 1410px;font-size: 22px;color: rgb(255,255,255);top: 120px">{{ total3 }} m³</span>
+              style="position: absolute;left: 1295px;font-size: 28px;color: rgba(36, 247, 240, 1);top: 10px">用气量统计</span>
+          <span style="position: absolute;left: 1295px;font-size: 22px;color: rgb(255,255,255);top: 67px">{{setValue()}}用气量统计</span>
+          <span style="position: absolute;left: 1295px;font-size: 22px;color: rgb(255,255,255);top: 112px">{{ total3 }} m³</span>
         </div>
         <div id="myChart3" :style="{width: '600px', height: '700px'}"></div>
 
@@ -261,7 +261,38 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="scss">
+  .el-radio-button__inner{
+    background: #0e253d;
+    color: #ffffff;
+    border: none;
+    width: 120px;
+    &::after{
+
+    }
+  }
+  .el-radio-button:first-child .el-radio-button__inner{
+    border: 0;
+  }
+  .el-radio-button{
+    &:not(:last-child){
+      .el-radio-button__inner{
+        position: relative;
+        &::after{
+          position: absolute;
+          right: 0;
+          top:50%;
+          margin-top: -14px;
+          content: '';
+          display: inline-block;
+          width: 1px;
+          height: 28px;
+          background: #122F4D;
+        }
+      }
+
+    }
+  }
 .el-range-editor.el-input__inner {
   /*background-color: black;*/
 }
