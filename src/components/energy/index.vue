@@ -144,6 +144,99 @@ export default {
         let data = res.data.data.list
         this.total1 = res.data.data.total
         let myChart = this.$echart.init(document.getElementById('myChart1'))
+          console.log(data.sort((a,b)=>{return a.value-b.value}))
+          // myChart.setOption({
+          //     tooltip: {
+          //         trigger: 'item'
+          //     },
+          //     legend: {
+          //         top: '420px',
+          //         left: 'center',
+          //         textStyle: {
+          //                         color: "#fff"
+          //                     },
+          //     },
+          //     series: [
+          //         {
+          //             top: '-250px',
+          //             name: 'Access From',
+          //             type: 'pie',
+          //             radius: ['30%', '50%'],
+          //             avoidLabelOverlap: false,
+          //             itemStyle: {
+          //                 borderRadius: 5,
+          //                 // borderColor: '#fff',
+          //                 // borderWidth: 2
+          //             },
+          //             label: {
+          //                 show: false,
+          //                 position: 'center'
+          //             },
+          //             emphasis: {
+          //                 label: {
+          //                     show: true,
+          //                     fontSize: '30',
+          //                     fontWeight: 'bold',
+          //                     color:'#fff'
+          //                 }
+          //             },
+          //             labelLine: {
+          //                 show: false
+          //             },
+          //             data: data
+          //         }
+          //     ]
+          // })
+          // myChart.setOption({
+          //     legend: {
+          //         top: '420px',
+          //         orient: 'vertical',
+          //         left: '100px',
+          //         bottom: "0",
+          //         textStyle: {
+          //             color: "#fff"
+          //         },
+          //         formatter: (name) => {
+          //             if (data.length) {
+          //                 const item = data.filter((item) => item.name === name)[0];
+          //                 return `${name}：   ${item.value}  KWH`;
+          //             }
+          //         },
+          //     },
+          //     textStyle: {
+          //         color: '#f00'
+          //     },
+          //     toolbox: {
+          //         show: true,
+          //         feature: {
+          //             mark: { show: true },
+          //             dataView: { show: true, readOnly: false },
+          //             restore: { show: true },
+          //             saveAsImage: { show: true }
+          //         }
+          //     },
+          //
+          //     series: [
+          //         {
+          //             top: '-250px',
+          //             name: 'Radius Mode',
+          //             type: 'pie',
+          //             radius: [20, 180],
+          //             center: ['50%', '50%'],
+          //             roseType: 'radius',
+          //             itemStyle: {
+          //                 borderRadius: 8,
+          //             },
+          //             label:{
+          //                 show:false,
+          //                 shadowColor:'transparent',
+          //                 color:'#fff',
+          //                 fontSize:'14',
+          //             },
+          //             data: data.sort((a,b)=>{return a-b})
+          //         }
+          //     ]
+          // })
         myChart.setOption({
           tooltip: {
             trigger: 'item'
