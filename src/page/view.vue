@@ -5,7 +5,7 @@
 </template>
 <script>
 import init from '@/mixins/'
-import {verToken} from '@/api/visual'
+import {verToken,getAllData} from '@/api/visual'
 
 export default {
   data() {
@@ -22,8 +22,21 @@ export default {
   },
   mounted() {
     this.isLogin()
+    this.getSiteData()
+    setInterval(this.getSiteData, 10000);
+
   },
   methods: {
+    //请求数据存入浏览器缓存中
+    getSiteData(){
+      getAllData().then(res=>{
+        res.data.data.map(i=>{
+          localStorage.setItem(i.name,i.value)
+        })
+      })
+    },
+
+
     //判断是否登录
     isLogin() {
       let token = localStorage.getItem("zt-token");

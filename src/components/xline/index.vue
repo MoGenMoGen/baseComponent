@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-import {getVal} from '@/api/visual'
+// import {getVal} from '@/api/visual'
 
 export default {
   name: 'xline',
@@ -44,14 +44,17 @@ export default {
     getInfo() {
       //console.log(this.option)
       if (this.option.addr) {
-        getVal(this.option.addr).then(res => {
-          let data = res.data;
-          if (data.code === 200 && data.msg !== '暂无承载数据') {
-            let val = data.data
-            this.show = val == this.option.openVal;
-          }
+        let item = localStorage.getItem(this.option.addr);
+        this.show = item == this.option.openVal;
 
-        })
+        // getVal(this.option.addr).then(res => {
+        //   let data = res.data;
+        //   if (data.code === 200 && data.msg !== '暂无承载数据') {
+        //     let val = data.data
+        //     this.show = val == this.option.openVal;
+        //   }
+        //
+        // })
       }
     }
 

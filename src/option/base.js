@@ -50,7 +50,7 @@ export default [{
             "name": "自定义",
             "title": "自定义",
             "icon": 'icon-bar',
-            "img": require('@/assets/text4.png'),
+            "img": require('@/assets/icon/自定义.png'),
             "data": [],
             "dataFormatter": "",
             "stylesFormatter": "",
@@ -64,13 +64,14 @@ export default [{
                 "fontSize": 20,
             }
         }
-    }, {
+    },
+        {
         label: '状态指示',
         option: {
             "name": "状态指示",
             "title": "状态指示",
             "icon": 'icon-bar',
-            "img": require('@/assets/text4.png'),
+            "img": require('@/assets/icon/指示状态.png'),
             "data": [],
             "dataFormatter": "",
             "stylesFormatter": "",
@@ -84,13 +85,34 @@ export default [{
                 "fontSize": 20,
             }
         }
-    }, {
+    },
+        {
+            label: '指示灯',
+            option: {
+                "name": "指示灯",
+                "title": "指示灯",
+                "icon": 'icon-bar',
+                "img": require('@/assets/icon/指示状态.png'),
+                "data": [],
+                "dataFormatter": "",
+                "stylesFormatter": "",
+                "component": {
+                    "width": 80,
+                    "height": 80,
+                    "name": "light",
+                    "prop": "light",
+                },
+                "option": {
+                }
+            }
+        },
+        {
         label: '线条',
         option: {
             "name": "线条",
             "title": "线条",
             "icon": 'icon-bar',
-            "img": require('@/assets/text4.png'),
+            "img": require('@/assets/icon/线条.png'),
             "data": [],
             "dataFormatter": "",
             "stylesFormatter": "",
@@ -112,7 +134,7 @@ export default [{
                 "name": "能耗",
                 "title": "能耗",
                 "icon": 'icon-bar',
-                "img": require('@/assets/text4.png'),
+                "img": require('@/assets/icon/能耗.png'),
                 "data": [],
                 "dataFormatter": "",
                 "stylesFormatter": "",
@@ -135,7 +157,7 @@ export default [{
                 "name": "液位",
                 "title": "液位",
                 "icon": 'icon-bar',
-                "img": require('@/assets/text4.png'),
+                "img": require('@/assets/icon/液位.png'),
                 "data": [],
                 "dataFormatter": "",
                 "stylesFormatter": "",
@@ -156,7 +178,7 @@ export default [{
                 "name": "移动",
                 "title": "移动",
                 "icon": 'icon-bar',
-                "img": require('@/assets/text4.png'),
+                "img": require('@/assets/icon/移动小车.png'),
                 "data": [],
                 "dataFormatter": "",
                 "stylesFormatter": "",

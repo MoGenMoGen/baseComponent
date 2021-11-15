@@ -63,12 +63,9 @@
 
     <img src="./rot/红.png" alt="" v-if="r25Show" height="28px">
     <img src="./rot/绿.png" alt="" v-if="r26Show" height="28px">
-
   </div>
 </template>
 <script>
-import {getVal} from '@/api/visual'
-
 export default {
   name: 'state',
   props: {
@@ -141,313 +138,163 @@ export default {
   },
   methods: {
     getInfo() {
-      // this.t2Show = true
+
       if (this.option.q1) {
-        getVal(this.option.q1).then(res => {
-          if (res.data.data == this.option.t1) {
-            this.t1Show = true;
-            this.defShow = false;
-          } else {
-            this.t1Show = false;
-            this.defShow = true;
-          }
-        })
+        this.t1Show = localStorage.getItem(this.option.q1) == this.option.t1;
       }
       if (this.option.q2) {
-        getVal(this.option.q2).then(res => {
-          if (res.data.data == this.option.t2) {
-            this.t2Show = true;
-            this.defShow = false;
-          } else {
-            this.t2Show = false;
-            this.defShow = true;
-          }
-        })
+        this.t2Show = localStorage.getItem(this.option.q2) == this.option.t2;
       }
       if (this.option.q3) {
-        getVal(this.option.q3).then(res => {
-          if (res.data.data == this.option.t3) {
-            this.t3Show = true;
-            this.defShow = false;
-          } else {
-            this.t3Show = false;
-            this.defShow = true;
-          }
-        })
+        this.t3Show = localStorage.getItem(this.option.q3) == this.option.t3;
       }
       if (this.option.q4) {
-        getVal(this.option.q4).then(res => {
-          if (res.data.data == this.option.t4) {
-            this.t4Show = true;
-            this.defShow = false;
-          } else {
-            this.t4Show = false;
-            this.defShow = true;
-          }
-        })
+        this.t4Show = localStorage.getItem(this.option.q4) == this.option.t4;
       }
       if (this.option.q5) {
-        getVal(this.option.q5).then(res => {
-          if (res.data.data == this.option.t5) {
-            this.t5Show = true;
-            this.defShow = false;
-          } else {
-            this.t5Show = false;
-            this.defShow = true;
-          }
-        })
+        this.t5Show = localStorage.getItem(this.option.q5) == this.option.t5;
       }
       if (this.option.q6) {
-        getVal(this.option.q6).then(res => {
-          if (res.data.data == this.option.t6) {
-            this.t6Show = true;
-            this.defShow = false;
-          } else {
-            this.t6Show = false;
-            this.defShow = true;
-          }
-        })
+        this.t6Show = localStorage.getItem(this.option.q6) == this.option.t6;
       }
 
       if (this.option.q7) {
-        getVal(this.option.q7).then(res => {
-          if (res.data.data == this.option.t7) {
-            this.t7Show = true;
-            this.defShow = false;
-          } else {
-            this.t7Show = false;
-            this.defShow = true;
-          }
-        })
+        this.t7Show = localStorage.getItem(this.option.q7) == this.option.t7;
       }
 
       if (this.option.q8) {
-        getVal(this.option.q8).then(res => {
-          if (res.data.data == this.option.t8) {
-            this.t8Show = true;
-            this.defShow = false;
-          } else {
-            this.t8Show = false;
-            this.defShow = true;
-          }
-        })
+        this.t8Show = localStorage.getItem(this.option.q8) == this.option.t8;
       }
       if (this.option.q9) {
-        getVal(this.option.q9).then(res => {
-          if (res.data.data == this.option.t9) {
-            this.t9Show = true;
-            this.defShow = false;
-          } else {
-            this.t9Show = false;
-            this.defShow = true;
-          }
-        })
+        this.t9Show = localStorage.getItem(this.option.q9) == this.option.t9;
       }
-
-
       if (this.option.q10) {
-        getVal(this.option.q10).then(res => {
-          this.t10Show = res.data.data == this.option.t10;
-        })
+        this.t10Show = localStorage.getItem(this.option.q10) == this.option.t10;
       }
       if (this.option.q11) {
-        getVal(this.option.q11).then(res => {
-          this.t11Show = res.data.data == this.option.t11;
-        })
+        this.t11Show = localStorage.getItem(this.option.q11) == this.option.t11;
       }
 
       if (this.option.q12) {
-        getVal(this.option.q12).then(res => {
-          this.t12Show = res.data.data == this.option.t12;
-        })
+        this.t12Show = localStorage.getItem(this.option.q12) == this.option.t12;
       }
 
       if (this.option.q13) {
-        getVal(this.option.q13).then(res => {
-          this.t13Show = res.data.data == this.option.t13;
-        })
+        this.t13Show = localStorage.getItem(this.option.q13) == this.option.t13;
       }
 
       if (this.option.q14) {
-        getVal(this.option.q14).then(res => {
-          this.t14Show = res.data.data == this.option.t14;
-        })
+        this.t14Show = localStorage.getItem(this.option.q14) == this.option.t14;
       }
       if (this.option.q15) {
-        getVal(this.option.q15).then(res => {
-          this.t15Show = res.data.data == this.option.t15;
-        })
+        this.t15Show = localStorage.getItem(this.option.q15) == this.option.t15;
+
       }
       if (this.option.q16) {
-        getVal(this.option.q16).then(res => {
-          this.t16Show = res.data.data == this.option.t16;
-        })
+        this.t16Show = localStorage.getItem(this.option.q16) == this.option.t16;
+
       }
       if (this.option.q17) {
-        getVal(this.option.q17).then(res => {
-          this.t17Show = res.data.data == this.option.t17;
-        })
+        this.t17Show = localStorage.getItem(this.option.q17) == this.option.t17;
+
       }
 
       if (this.option.q18) {
-        getVal(this.option.q18).then(res => {
-          this.t18Show = res.data.data == this.option.t18;
-        })
+        this.t18Show = localStorage.getItem(this.option.q18) == this.option.t18;
+
       }
       if (this.option.q19) {
-        getVal(this.option.q19).then(res => {
-          this.t19Show = res.data.data == this.option.t19;
-        })
+        this.t19Show = localStorage.getItem(this.option.q19) == this.option.t19;
+
       }
       if (this.option.q20) {
-        getVal(this.option.q20).then(res => {
-          this.t20Show = res.data.data == this.option.t20;
-        })
+        this.t20Show = localStorage.getItem(this.option.q20) == this.option.t20;
+
       }
       if (this.option.q21) {
-        getVal(this.option.q21).then(res => {
-          this.t21Show = res.data.data == this.option.t21;
-        })
+        this.t21Show = localStorage.getItem(this.option.q21) == this.option.t21;
       }
-
       if (this.option.q22) {
-        getVal(this.option.q22).then(res => {
-          this.t22Show = res.data.data == this.option.t22;
-        })
+        this.t22Show = localStorage.getItem(this.option.q22) == this.option.t22;
       }
-
-
       if (this.option.r1) {
-        getVal(this.option.r1).then(res => {
-          this.r1Show = res.data.data == this.option.e1;
-        })
+        this.r1Show = localStorage.getItem(this.option.r1) == this.option.e1;
       }
-
-
       if (this.option.r2) {
-        getVal(this.option.r2).then(res => {
-          this.r2Show = res.data.data == this.option.e2;
-        })
+        this.r2Show = localStorage.getItem(this.option.r2) == this.option.e2;
       }
       if (this.option.r3) {
-        getVal(this.option.r3).then(res => {
-          this.r3Show = res.data.data == this.option.e3;
-        })
+        this.r3Show = localStorage.getItem(this.option.r3) == this.option.e3;
       }
       if (this.option.r4) {
-        getVal(this.option.r4).then(res => {
-          this.r4Show = res.data.data == this.option.e4;
-        })
+        this.r4Show = localStorage.getItem(this.option.r4) == this.option.e4;
       }
       if (this.option.r5) {
-        getVal(this.option.r5).then(res => {
-          this.r5Show = res.data.data == this.option.e5;
-        })
+        this.r5Show = localStorage.getItem(this.option.r5) == this.option.e5;
       }
       if (this.option.r6) {
-        getVal(this.option.r6).then(res => {
-          this.r6Show = res.data.data == this.option.e6;
-        })
+        this.r6Show = localStorage.getItem(this.option.r6) == this.option.e6;
       }
       if (this.option.r7) {
-        getVal(this.option.r7).then(res => {
-          this.r7Show = res.data.data == this.option.e7;
-        })
+        this.r7Show = localStorage.getItem(this.option.r7) == this.option.e7;
       }
       if (this.option.r8) {
-        getVal(this.option.r8).then(res => {
-          this.r8Show = res.data.data == this.option.e8;
-        })
+        this.r8Show = localStorage.getItem(this.option.r8) == this.option.e8;
       }
       if (this.option.r9) {
-        getVal(this.option.r9).then(res => {
-          this.r9Show = res.data.data == this.option.e9;
-        })
+        this.r9Show = localStorage.getItem(this.option.r9) == this.option.e9;
       }
       if (this.option.r10) {
-        getVal(this.option.r10).then(res => {
-          this.r10Show = res.data.data == this.option.e10;
-        })
+        this.r10Show = localStorage.getItem(this.option.r10) == this.option.e10;
       }
       if (this.option.r11) {
-        getVal(this.option.r11).then(res => {
-          this.r11Show = res.data.data == this.option.e11;
-        })
+        this.r11Show = localStorage.getItem(this.option.r11) == this.option.e11;
       }
       if (this.option.r12) {
-        getVal(this.option.r12).then(res => {
-          this.r12Show = res.data.data == this.option.e12;
-        })
+        this.r12Show = localStorage.getItem(this.option.r12) == this.option.e12;
       }
       if (this.option.r13) {
-        getVal(this.option.r13).then(res => {
-          this.r13Show = res.data.data == this.option.e13;
-        })
+        this.r13Show = localStorage.getItem(this.option.r13) == this.option.e13;
       }
       if (this.option.r14) {
-        getVal(this.option.r14).then(res => {
-          this.r14Show = res.data.data == this.option.e14;
-        })
+        this.r14Show = localStorage.getItem(this.option.r14) == this.option.e14;
       }
       if (this.option.r15) {
-        getVal(this.option.r15).then(res => {
-          this.r15Show = res.data.data == this.option.e15;
-        })
+        this.r15Show = localStorage.getItem(this.option.r15) == this.option.e15;
       }
       if (this.option.r16) {
-        getVal(this.option.r16).then(res => {
-          this.r16Show = res.data.data == this.option.e16;
-        })
+        this.r16Show = localStorage.getItem(this.option.r16) == this.option.e16;
+
       }
       if (this.option.r17) {
-        getVal(this.option.r17).then(res => {
-          this.r17Show = res.data.data == this.option.e17;
-        })
+        this.r17Show = localStorage.getItem(this.option.r17) == this.option.e17;
       }
       if (this.option.r18) {
-        getVal(this.option.r18).then(res => {
-          this.r18Show = res.data.data == this.option.e18;
-        })
+        this.r18Show = localStorage.getItem(this.option.r18) == this.option.e18;
       }
       if (this.option.r19) {
-        getVal(this.option.r19).then(res => {
-          this.r19Show = res.data.data == this.option.e19;
-        })
+        this.r19Show = localStorage.getItem(this.option.r19) == this.option.e19;
       }
       if (this.option.r20) {
-        getVal(this.option.r20).then(res => {
-          this.r20Show = res.data.data == this.option.e20;
-        })
+        this.r20Show = localStorage.getItem(this.option.r20) == this.option.e20;
       }
       if (this.option.r21) {
-        getVal(this.option.r21).then(res => {
-          this.r21Show = res.data.data == this.option.e21;
-        })
+        this.r21Show = localStorage.getItem(this.option.r21) == this.option.e21;
       }
       if (this.option.r22) {
-        getVal(this.option.r22).then(res => {
-          this.r22Show = res.data.data == this.option.e22;
-        })
+        this.r22Show = localStorage.getItem(this.option.r22) == this.option.e22;
       }
       if (this.option.r23) {
-        getVal(this.option.r23).then(res => {
-          this.r23Show = res.data.data == this.option.e23;
-        })
+        this.r23Show = localStorage.getItem(this.option.r23) == this.option.e23;
       }
       if (this.option.r24) {
-        getVal(this.option.r24).then(res => {
-          this.r24Show = res.data.data == this.option.e24;
-        })
+        this.r24Show = localStorage.getItem(this.option.r24) == this.option.e24;
       }
       if (this.option.r25) {
-        getVal(this.option.r25).then(res => {
-          this.r25Show = res.data.data == this.option.e25;
-        })
+        this.r25Show = localStorage.getItem(this.option.r25) == this.option.e25;
       }
       if (this.option.r26) {
-        getVal(this.option.r26).then(res => {
-          this.r26Show = res.data.data == this.option.e26;
-        })
+        this.r26Show = localStorage.getItem(this.option.r26) == this.option.e26;
       }
 
     }

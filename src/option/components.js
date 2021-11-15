@@ -38,6 +38,9 @@ import energyOption from '@/components/energy/option'
 import levelOption from '@/components/level/option'
 //移动
 import moveCarOption from '@/components/moveCar/option'
+//指示灯
+import lightOption from '@/components/light/option'
+
 export default {
   components: {
     commonOption,
@@ -70,6 +73,6 @@ export default {
     alertOption,
     alertListOption,
     energyOption,
-    levelOption,moveCarOption
+    levelOption,moveCarOption,lightOption
   }
 }

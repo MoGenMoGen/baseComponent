@@ -1,7 +1,7 @@
 <template>
 <!-- 报警数 -->
   <div>
-    <div class="circle" @click="toPage">
+    <div class="circle" @click="toPage" v-if="num>0" >
         <span class="font" :style="{fontSize:fontSize,color:'#fff'}">{{ num }}</span>
     </div>
   </div>

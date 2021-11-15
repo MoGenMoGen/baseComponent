@@ -18,6 +18,7 @@
     </el-aside>
     <el-container>
       <el-header class="page">
+
         <el-pagination layout="total, sizes, prev, pager, next, jumper"
                        background
                        size="mini"
@@ -27,6 +28,8 @@
                        :current-page.sync="page.page"
                        :total="page.total">
         </el-pagination>
+        <el-input style="width: 150px" size="mini" v-model="nm" placeholder="请输入名称搜索"></el-input>
+        <el-button @click="getList(activeName)" size="mini" style="height: 28px">搜索</el-button>
       </el-header>
       <el-main class="content">
         <div class="content__item content__item--add"
@@ -109,6 +112,7 @@ export default {
       typelist: [],
       index: 0,
       type: '',
+      nm:'',
       option: {
         column: [{
           label: '分组',
@@ -335,9 +339,12 @@ export default {
       this.page.size = val;
       this.getList();
     },
+
+
     getList(category) {
       this.list = []
       getList({
+        title:this.nm,
         category: category || this.activeName,
         current: this.page.page,
         size: this.page.size,

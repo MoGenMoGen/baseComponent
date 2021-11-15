@@ -1,7 +1,5 @@
 import {setPx, getUrlParams} from './util';
 import config from './config';
-import {getVal} from '@/api/visual'
-
 export default (() => {
     return {
         props: {
@@ -202,15 +200,32 @@ export default (() => {
         },
         mounted() {
             this.init();
-            this.timer = setInterval(this.setVal, 3000);
+            this.timer = setInterval(this.setVal, 10000);
         },
         methods: {
             setVal() {
                 if (!this.validatenull(this.mqtt)) {
-                    getVal(this.mqtt).then(res => {
-                        this.data.value = res.data.data
-                    })
+                    let val = localStorage.getItem(this.mqtt)
+
+                    if (this.validatenull(this.option.xsd)){
+                        this.data.value = val
+                    }else {
+                        this.data.value = Number(val).toFixed(this.option.xsd)
+                    }
+                    // getVal(this.mqtt).then(res => {
+                    //     let val =  res.data.data
+                    //     // console.log(Number(val).toFixed(5))
+                    //     // this.data.value = res.data.data
+                    //     if (this.validatenull(this.option.xsd)){
+                    //         this.data.value = val
+                    //     }else {
+                    //         this.data.value = Number(val).toFixed(this.option.xsd)
+                    //     }
+                    //
+                    // })
                 }
+
+
             },
             init() {
                 this.setVal()

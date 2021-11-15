@@ -110,6 +110,19 @@ export const getVal = (mqtt) => request({
     mqtt
   }
 });
+export const getVal2 = (mqtt) => request({
+  url: '/api/blade-mh/site/valByMqtt2',
+  method: 'get',
+  params: {
+    mqtt
+  }
+});
+export const getAllData = () => request({
+  url: '/api/blade-mh/site/allData',
+  method: 'get',
+});
+
+
 //获取报警数量
 export const getAlertNum = (addr) => request({
   url: '/api/blade-mh/errlog/alertNum',

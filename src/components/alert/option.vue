@@ -6,7 +6,7 @@
     </el-form-item>
 
     <el-form-item label="设备绑定">
-      <avue-input-tree  v-model="main.activeOption.device" placeholder="请选择设备" type="tree" :dic="dic" :props="defaultProps"></avue-input-tree>
+      <avue-input-tree style="width: 100%"  v-model="main.activeOption.device" placeholder="请选择设备" type="tree" :dic="dic" :props="defaultProps"></avue-input-tree>
     </el-form-item>
 
     <el-form-item label="跳转地址">

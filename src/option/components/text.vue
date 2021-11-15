@@ -9,6 +9,11 @@
       <avue-input v-model="main.activeObj.data.hz"></avue-input>
     </el-form-item>
 
+    <el-form-item label="小数点位数">
+      <avue-input-number v-model="main.activeOption.xsd"
+                         :max="5"></avue-input-number>
+    </el-form-item>
+
     <el-form-item label="字体大小">
       <avue-input-number v-model="main.activeOption.fontSize"
                          :max="200"></avue-input-number>
@@ -37,7 +42,7 @@
     </el-form-item>
 
 
-    <el-form-item label="MQTT订阅主题">
+    <el-form-item label="变量名称">
       <avue-input v-model="main.activeObj.mqtt"> </avue-input>
     </el-form-item>
     <el-collapse accordion>

@@ -396,7 +396,7 @@ import components from '@/option/components'
 import SketchRule from "vue-sketch-ruler";
 import { getList } from "@/api/db";
 import crypto from '@/utils/crypto'
-
+import {getAllData} from '@/api/visual'
 export default {
   mixins: [init, components],
   data () {
@@ -569,6 +569,8 @@ export default {
     this.listen();
     this.iniresize()
     this.initSqlList();
+    this.getSiteData();
+    setInterval(this.getSiteData, 10000);
   },
   mounted () {
     this.initFun()
@@ -577,8 +579,14 @@ export default {
     })
   },
   methods: {
-
-
+    //请求数据存入浏览器缓存中
+    getSiteData(){
+      getAllData().then(res=>{
+        res.data.data.map(i=>{
+          localStorage.setItem(i.name,i.value)
+        })
+      })
+    },
 
 
 
