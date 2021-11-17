@@ -212,17 +212,6 @@ export default (() => {
                     }else {
                         this.data.value = Number(val).toFixed(this.option.xsd)
                     }
-                    // getVal(this.mqtt).then(res => {
-                    //     let val =  res.data.data
-                    //     // console.log(Number(val).toFixed(5))
-                    //     // this.data.value = res.data.data
-                    //     if (this.validatenull(this.option.xsd)){
-                    //         this.data.value = val
-                    //     }else {
-                    //         this.data.value = Number(val).toFixed(this.option.xsd)
-                    //     }
-                    //
-                    // })
                 }
 
 

@@ -174,8 +174,26 @@ export const energy = (totalName,names,time) => {
     }
   })
 }
-
-
+//获取素材分类
+export const getDict = (code) => {
+  return request({
+    url: '/api/blade-system/dict/dictionary',
+    method: 'get',
+    params: {
+      code
+    }
+  })
+}
+//获取素材列表
+export const getSourceList = (type) => {
+  return request({
+    url: '/api/blade-mh/material/listByType',
+    method: 'get',
+    params: {
+      type
+    }
+  })
+}
 
 //设备列表
 export const getSiteList = (current, size, name) => {

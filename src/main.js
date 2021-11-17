@@ -12,7 +12,8 @@ import '@/mock/'
 //导入主题文件
 import '@/theme/index.js'
 import 'echarts-liquidfill'
-
+import ViewUI from 'view-design';
+import 'view-design/dist/styles/iview.css';
 window.axios = axios;
 Vue.config.productionTip = false
 Vue.prototype.url = url;
@@ -20,6 +21,7 @@ Vue.prototype.$echart = echarts
 Vue.use(window.AVUE, {
   size: 'mini'
 });
+Vue.use(ViewUI);
 Vue.use(ElementUI);
 Vue.use(dataV)
 new Vue({

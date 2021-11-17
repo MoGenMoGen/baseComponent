@@ -15,9 +15,9 @@ module.exports = {
     proxy: {
       '/api': {
         //本地服务接口地址
-        // target: 'http://localhost',
+        target: 'http://localhost',
         //远程演示服务地址,可用于直接启动项目
-        target: 'http://10086.jinkworld.com/api',
+        // target: 'http://10086.jinkworld.com/api',
         ws: true,
         pathRewrite: {
           '^/api': '/'
