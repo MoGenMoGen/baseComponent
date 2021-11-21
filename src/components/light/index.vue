@@ -2,10 +2,9 @@
   <div>
 <!--  默认指示灯  -->
     <img src="../state/img/t1.png" alt="" v-if="defShow" height="32px">
+    <img v-if="show"  :height="h" :width="w"  :src="imgUrl" alt="">
 
-    <img v-if="show"
-         :height="h" :width="w"
-        :src="imgUrl" alt="">
+
   </div>
 </template>
 <script>
@@ -17,11 +16,9 @@ export default {
   },
   data() {
     return {
-      tUrl:'../state/img/t1.png',
       imgUrl: '',
       show:false,
       defShow:true,
-      screenWidth:'',
       w:'',
       h:''
     }

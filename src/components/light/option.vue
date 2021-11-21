@@ -76,10 +76,6 @@ export default {
   },
 
   methods: {
-    // test(item){
-    //   this.main.activeOption.test = true
-    //   this.main.activeOption.testUrl = item.url
-    // },
     updVal(){
       this.$forceUpdate();
     },

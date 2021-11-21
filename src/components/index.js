@@ -11,6 +11,7 @@ import energy from './energy/';
 import level from './level/'
 import moveCar from './moveCar/'
 import light from './light/'
+import trend from './trend/'
 
 
 import $Echart from '../echart/common';
@@ -18,7 +19,7 @@ import { KEY_COMPONENT_NAME } from '../echart/variable';
 
 export default (() => {
   const list = [
-    Test,State,Xline,Alert,alertList,energy,level,moveCar,light
+    Test,State,Xline,Alert,alertList,energy,level,moveCar,light,trend
   ]
   let result = {}
   //循环注册组件

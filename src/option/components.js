@@ -40,6 +40,7 @@ import levelOption from '@/components/level/option'
 import moveCarOption from '@/components/moveCar/option'
 //指示灯
 import lightOption from '@/components/light/option'
+import trendOption from '@/components/trend/option'
 
 export default {
   components: {
@@ -73,6 +74,6 @@ export default {
     alertOption,
     alertListOption,
     energyOption,
-    levelOption,moveCarOption,lightOption
+    levelOption,moveCarOption,lightOption,trendOption
   }
 }

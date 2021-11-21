@@ -2,8 +2,6 @@
 <template>
   <div>
     <div style="text-align: left;margin-left: 70px">
-
-<!--      <avue-select size="mini"  @change="changeSelect"  v-model="value" placeholder="请选择内容" type="tree" :dic="dic"></avue-select>-->
       <el-radio-group v-model="value"   @change="changeSelect" fill="#139a95" text-color="">
         <el-radio-button label="累计"></el-radio-button>
         <el-radio-button label="日"></el-radio-button>
@@ -32,7 +30,7 @@
           <span
               style="position: absolute;left: 170px;font-size: 28px;color: rgba(36, 247, 240, 1);top: 10px">用电量统计</span>
           <span style="position: absolute;left: 170px;font-size: 22px;color: rgb(255,255,255);top: 67px">{{setValue()}}用电量统计</span>
-          <span style="position: absolute;left: 170px;font-size: 22px;color: rgb(255,255,255);top: 112px">{{ total1 }} KWH</span>
+          <span style="position: absolute;left: 170px;font-size: 22px;color: rgb(255,255,255);top: 112px">{{ Number(total1).toFixed(2)  }} KWH</span>
         </div>
         <div>
           <div id="myChart1" :style="{width: '600px', height: '700px'}"></div>
@@ -46,7 +44,7 @@
           <span
               style="position: absolute;left: 730px;font-size: 28px;color: rgba(36, 247, 240, 1);top: 10px">用水量统计</span>
           <span style="position: absolute;left: 730px;font-size: 22px;color: rgb(255,255,255);top: 67px">{{setValue()}}用水量统计</span>
-          <span style="position: absolute;left: 730px;font-size: 22px;color: rgb(255,255,255);top: 112px">{{ total2 }} m³</span>
+          <span style="position: absolute;left: 730px;font-size: 22px;color: rgb(255,255,255);top: 112px">{{ Number(total2).toFixed(2)  }} m³</span>
         </div>
         <div id="myChart2" :style="{width: '600px', height: '700px'}"></div>
       </el-col>
@@ -58,7 +56,7 @@
           <span
               style="position: absolute;left: 1295px;font-size: 28px;color: rgba(36, 247, 240, 1);top: 10px">用气量统计</span>
           <span style="position: absolute;left: 1295px;font-size: 22px;color: rgb(255,255,255);top: 67px">{{setValue()}}用气量统计</span>
-          <span style="position: absolute;left: 1295px;font-size: 22px;color: rgb(255,255,255);top: 112px">{{ total3 }} m³</span>
+          <span style="position: absolute;left: 1295px;font-size: 22px;color: rgb(255,255,255);top: 112px">{{ Number(total3).toFixed(2) }} m³</span>
         </div>
         <div id="myChart3" :style="{width: '600px', height: '700px'}"></div>
 
@@ -144,99 +142,7 @@ export default {
         let data = res.data.data.list
         this.total1 = res.data.data.total
         let myChart = this.$echart.init(document.getElementById('myChart1'))
-          console.log(data.sort((a,b)=>{return a.value-b.value}))
-          // myChart.setOption({
-          //     tooltip: {
-          //         trigger: 'item'
-          //     },
-          //     legend: {
-          //         top: '420px',
-          //         left: 'center',
-          //         textStyle: {
-          //                         color: "#fff"
-          //                     },
-          //     },
-          //     series: [
-          //         {
-          //             top: '-250px',
-          //             name: 'Access From',
-          //             type: 'pie',
-          //             radius: ['30%', '50%'],
-          //             avoidLabelOverlap: false,
-          //             itemStyle: {
-          //                 borderRadius: 5,
-          //                 // borderColor: '#fff',
-          //                 // borderWidth: 2
-          //             },
-          //             label: {
-          //                 show: false,
-          //                 position: 'center'
-          //             },
-          //             emphasis: {
-          //                 label: {
-          //                     show: true,
-          //                     fontSize: '30',
-          //                     fontWeight: 'bold',
-          //                     color:'#fff'
-          //                 }
-          //             },
-          //             labelLine: {
-          //                 show: false
-          //             },
-          //             data: data
-          //         }
-          //     ]
-          // })
-          // myChart.setOption({
-          //     legend: {
-          //         top: '420px',
-          //         orient: 'vertical',
-          //         left: '100px',
-          //         bottom: "0",
-          //         textStyle: {
-          //             color: "#fff"
-          //         },
-          //         formatter: (name) => {
-          //             if (data.length) {
-          //                 const item = data.filter((item) => item.name === name)[0];
-          //                 return `${name}：   ${item.value}  KWH`;
-          //             }
-          //         },
-          //     },
-          //     textStyle: {
-          //         color: '#f00'
-          //     },
-          //     toolbox: {
-          //         show: true,
-          //         feature: {
-          //             mark: { show: true },
-          //             dataView: { show: true, readOnly: false },
-          //             restore: { show: true },
-          //             saveAsImage: { show: true }
-          //         }
-          //     },
-          //
-          //     series: [
-          //         {
-          //             top: '-250px',
-          //             name: 'Radius Mode',
-          //             type: 'pie',
-          //             radius: [20, 180],
-          //             center: ['50%', '50%'],
-          //             roseType: 'radius',
-          //             itemStyle: {
-          //                 borderRadius: 8,
-          //             },
-          //             label:{
-          //                 show:false,
-          //                 shadowColor:'transparent',
-          //                 color:'#fff',
-          //                 fontSize:'14',
-          //             },
-          //             data: data.sort((a,b)=>{return a-b})
-          //         }
-          //     ]
-          // })
+        // console.log(data.sort((a,b)=>{return a.value-b.value}))
         myChart.setOption({
           tooltip: {
             trigger: 'item'
@@ -252,7 +158,7 @@ export default {
             formatter: (name) => {
               if (data.length) {
                 const item = data.filter((item) => item.name === name)[0];
-                return `${name}：   ${item.value}  KWH`;
+                return `${name}：   ${Number(item.value).toFixed(2) }  KWH`;
               }
             },
           },
@@ -292,7 +198,7 @@ export default {
             formatter: (name) => {
               if (data.length) {
                 const item = data.filter((item) => item.name === name)[0];
-                return `${name}：   ${item.value}  m³`;
+                return `${name}：   ${Number(item.value).toFixed(2) }  m³`;
               }
             },
           },
@@ -332,7 +238,7 @@ export default {
             formatter: (name) => {
               if (data.length) {
                 const item = data.filter((item) => item.name === name)[0];
-                return `${name}：   ${item.value}  m³`;
+                return `${name}：   ${Number(item.value).toFixed(2)  }  m³`;
               }
             },
           },

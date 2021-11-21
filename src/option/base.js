@@ -107,6 +107,26 @@ export default [{
             }
         },
         {
+            label: '趋势',
+            option: {
+                "name": "趋势",
+                "title": "趋势",
+                "icon": 'icon-bar',
+                "img": require('@/assets/line.png'),
+                "data": [],
+                "dataFormatter": "",
+                "stylesFormatter": "",
+                "component": {
+                    "width": 80,
+                    "height": 80,
+                    "name": "trend",
+                    "prop": "trend",
+                },
+                "option": {
+                }
+            }
+        },
+        {
         label: '线条',
         option: {
             "name": "线条",
