@@ -2,9 +2,9 @@
   <div>
 <!--  默认指示灯  -->
     <img src="../state/img/t1.png" alt="" v-if="defShow" height="32px">
-    <img v-if="show"  :height="h" :width="w"  :src="imgUrl" alt="">
+    <img v-if="show"  :height="h" :width="w"  :src="imgShowUrl" alt="">
 
-
+<!--    <img src="../state/img/t1.png" alt="" height="32px">-->
   </div>
 </template>
 <script>
@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      imgUrl: '',
+      imgShowUrl: '',
       show:false,
       defShow:true,
       w:'',
@@ -24,24 +24,29 @@ export default {
     }
   },
   computed: {
-
+    // w() {
+    //   return (this.option.w)
+    // },
+    // h() {
+    //   return (this.option.h)
+    // }
   },
   mounted() {
     this.getInfo()
-    setInterval(this.getInfo, 1000);
+   setInterval(this.getInfo, 10000);
   },
   methods: {
     getInfo() {
       if (this.option.tableData != undefined){
         this.defShow = false
         this.option.tableData.map(p => {
-          if (p.testModel){
-            this.imgUrl = p.url
-            this.w = p.w
-            this.h = p.h
-            this.show =true
-          }else {
-            this.show = false
+          // if (p.testModel){
+          //   this.imgUrl = p.url
+          //   this.w = p.w
+          //   this.h = p.h
+          //   this.show =true
+          // }else {
+            //this.show = false
             let b = false;
             //con条件  vars变量  val值
             let item = localStorage.getItem(p.vars);
@@ -72,12 +77,15 @@ export default {
               }
             }
             if (b) {
-              this.imgUrl = p.url
+              this.show = true
+              this.imgShowUrl = p.url
+              // console.log(this.imgShowUrl)
               this.w = p.w
               this.h = p.h
-              this.show =true
+
             }
-          }
+
+          // }
 
 
 

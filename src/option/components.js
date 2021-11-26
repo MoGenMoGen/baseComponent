@@ -40,11 +40,15 @@ import levelOption from '@/components/level/option'
 import moveCarOption from '@/components/moveCar/option'
 //指示灯
 import lightOption from '@/components/light/option'
+//趋势
 import trendOption from '@/components/trend/option'
+//游标
+import cursorOption from '@/components/cursor/option'
+
 
 export default {
   components: {
-    commonOption,
+    commonOption,cursorOption,
     mainOption,
     barOption,
     datetimeOption,

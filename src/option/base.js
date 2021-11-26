@@ -66,26 +66,26 @@ export default [{
         }
     },
         {
-        label: '状态指示',
-        option: {
-            "name": "状态指示",
-            "title": "状态指示",
-            "icon": 'icon-bar',
-            "img": require('@/assets/icon/指示状态.png'),
-            "data": [],
-            "dataFormatter": "",
-            "stylesFormatter": "",
-            "component": {
-                "width": 80,
-                "height": 80,
-                "name": "state",
-                "prop": "state",
-            },
-            "option": {
-                "fontSize": 20,
+            label: '状态指示',
+            option: {
+                "name": "状态指示",
+                "title": "状态指示",
+                "icon": 'icon-bar',
+                "img": require('@/assets/icon/指示状态.png'),
+                "data": [],
+                "dataFormatter": "",
+                "stylesFormatter": "",
+                "component": {
+                    "width": 80,
+                    "height": 80,
+                    "name": "state",
+                    "prop": "state",
+                },
+                "option": {
+                    "fontSize": 20,
+                }
             }
-        }
-    },
+        },
         {
             label: '指示灯',
             option: {
@@ -102,8 +102,7 @@ export default [{
                     "name": "light",
                     "prop": "light",
                 },
-                "option": {
-                }
+                "option": {}
             }
         },
         {
@@ -122,31 +121,30 @@ export default [{
                     "name": "trend",
                     "prop": "trend",
                 },
-                "option": {
-                }
+                "option": {}
             }
         },
         {
-        label: '线条',
-        option: {
-            "name": "线条",
-            "title": "线条",
-            "icon": 'icon-bar',
-            "img": require('@/assets/icon/线条.png'),
-            "data": [],
-            "dataFormatter": "",
-            "stylesFormatter": "",
-            "component": {
-                "width": 800,
-                "height": 500,
-                "name": "xline",
-                "prop": "xline",
-            },
-            "option": {
-                "fontSize": 20,
+            label: '线条',
+            option: {
+                "name": "线条",
+                "title": "线条",
+                "icon": 'icon-bar',
+                "img": require('@/assets/icon/线条.png'),
+                "data": [],
+                "dataFormatter": "",
+                "stylesFormatter": "",
+                "component": {
+                    "width": 800,
+                    "height": 500,
+                    "name": "xline",
+                    "prop": "xline",
+                },
+                "option": {
+                    "fontSize": 20,
+                }
             }
-        }
-    },
+        },
 
         {
             label: '能耗',
@@ -164,12 +162,9 @@ export default [{
                     "name": "energy",
                     "prop": "energy",
                 },
-                "option": {
-
-                }
+                "option": {}
             }
         },
-
 
         {
             label: '液位',
@@ -187,9 +182,7 @@ export default [{
                     "name": "level",
                     "prop": "level",
                 },
-                "option": {
-
-                }
+                "option": {}
             }
         },
         {
@@ -208,12 +201,28 @@ export default [{
                     "name": "moveCar",
                     "prop": "moveCar",
                 },
-                "option": {
-
-                }
+                "option": {}
             }
         },
-
+        {
+            label: '游标',
+            option: {
+                "name": "游标",
+                "title": "游标",
+                "icon": 'icon-bar',
+                "img": require('@/assets/icon/线条.png'),
+                "data": [],
+                "dataFormatter": "",
+                "stylesFormatter": "",
+                "component": {
+                    "width": 400,
+                    "height": 400,
+                    "name": "cursor",
+                    "prop": "cursor",
+                },
+                "option": {}
+            }
+        },
 
         {
             "label": 'datav',
@@ -611,138 +620,142 @@ export default [{
                     ]
                 },
             }
-        }, {
-            label: '散点图',
-            option: {
-                "title": "散点图",
-                "name": "散点图",
-                "icon": "icon-scatter",
-                "img": require('@/assets/scatter.png'),
-                "dataType": 1,
-                "dataMethod": 'get',
-                "time": 5000,
-                "url": baseUrl + "/scatter",
-                "data": [{
-                    "data": [
-                        [1, 8.04],
-                        [2, 6.95]
-                    ]
-                },
-                    {
-                        "data": [
-                            [1, 4.04],
-                            [2, 3.95]
-                        ]
-                    }],
-                "dataFormatter": "",
-                "stylesFormatter": "",
-                "component": {
-                    "width": 600,
-                    "height": 300,
-                    "name": "scatter",
-                    "prop": "scatter",
-                },
-                "option": {
-                    lineSize: 25,
-                    barColor: [{
-                        postion: 0.2,
-                        color1: '#91c7ae'
-                    },
-                        {
-                            postion: 0.8,
-                            color1: '#63869e'
-                        },
-                        {
-                            postion: 1,
-                            color1: '#c23531'
-                        }]
-                }
-            }
-        }, {
-            label: '漏斗图',
-            option: {
-                "title": "漏斗图",
-                "name": "漏斗图",
-                "icon": "icon-funnel",
-                "img": require('@/assets/funnel.png'),
-                "dataType": 1,
-                "dataMethod": 'get',
-                "time": 5000,
-                "url": baseUrl + "/funnel",
-                "data": [{
-                    value: 335,
-                    name: '直接访问'
-                },
-                    {
-                        value: 310,
-                        name: '邮件营销'
-                    },
-                    {
-                        value: 234,
-                        name: '联盟广告'
-                    }],
-                "dataFormatter": "",
-                "stylesFormatter": "",
-                "component": {
-                    "width": 400,
-                    "height": 300,
-                    "name": "funnel",
-                    "prop": "funnel",
-                },
-                "option": {
-                    radius: true,
-                    "barColor": [{
-                        "color1": "#83bff6",
-                    },
-                        {
-                            "color1": "#23B7E5",
-                        },
-                        {
-                            "color1": "rgba(154, 168, 212, 1)",
-                        },
-                        {
-                            "color1": "#188df0",
-                        },
-                        {
-                            "color1": "#564AA3",
-                        }
-                    ]
-                }
-            }
-        }, {
-            label: '地图',
-            option: {
-                "name": "地图",
-                "title": "地图",
-                "icon": "icon-map",
-                "img": require('@/assets/map.png'),
-                "data": [],
-                "dataFormatter": "",
-                "stylesFormatter": "",
-                "component": {
-                    "width": 800,
-                    "height": 500,
-                    "name": "map",
-                    "prop": "map",
-                },
-                "option": {
-                    "borderWidth": 1,
-                    "scale": 87,
-                    "type": 0,
-                    "borderColor": "#0dffff",
-                    "areaColor": "#061d33",
-                    "banner": true,
-                    "bannerTime": 3000,
-                    "fontSize": 14,
-                    "zoom": 0.5,
-                    "empAreaColor": "rgba(35, 183, 229, 0.42)",
-                    "empColor": "#fff",
-                    "index": "894edc1d-d2f0-4616-962c-8e61083ada71",
-                    "mapData": "https://data.bladex.vip/blade-visual/map/data?id=1235103352843448322",
-                    "color": "rgba(13, 255, 255, 1)",
-                }
-            },
-        }]
+        },
+        // {
+        //     label: '散点图',
+        //     option: {
+        //         "title": "散点图",
+        //         "name": "散点图",
+        //         "icon": "icon-scatter",
+        //         "img": require('@/assets/scatter.png'),
+        //         "dataType": 1,
+        //         "dataMethod": 'get',
+        //         "time": 5000,
+        //         "url": baseUrl + "/scatter",
+        //         "data": [{
+        //             "data": [
+        //                 [1, 8.04],
+        //                 [2, 6.95]
+        //             ]
+        //         },
+        //             {
+        //                 "data": [
+        //                     [1, 4.04],
+        //                     [2, 3.95]
+        //                 ]
+        //             }],
+        //         "dataFormatter": "",
+        //         "stylesFormatter": "",
+        //         "component": {
+        //             "width": 600,
+        //             "height": 300,
+        //             "name": "scatter",
+        //             "prop": "scatter",
+        //         },
+        //         "option": {
+        //             lineSize: 25,
+        //             barColor: [{
+        //                 postion: 0.2,
+        //                 color1: '#91c7ae'
+        //             },
+        //                 {
+        //                     postion: 0.8,
+        //                     color1: '#63869e'
+        //                 },
+        //                 {
+        //                     postion: 1,
+        //                     color1: '#c23531'
+        //                 }]
+        //         }
+        //     }
+        // },
+        // {
+        //     label: '漏斗图',
+        //     option: {
+        //         "title": "漏斗图",
+        //         "name": "漏斗图",
+        //         "icon": "icon-funnel",
+        //         "img": require('@/assets/funnel.png'),
+        //         "dataType": 1,
+        //         "dataMethod": 'get',
+        //         "time": 5000,
+        //         "url": baseUrl + "/funnel",
+        //         "data": [{
+        //             value: 335,
+        //             name: '直接访问'
+        //         },
+        //             {
+        //                 value: 310,
+        //                 name: '邮件营销'
+        //             },
+        //             {
+        //                 value: 234,
+        //                 name: '联盟广告'
+        //             }],
+        //         "dataFormatter": "",
+        //         "stylesFormatter": "",
+        //         "component": {
+        //             "width": 400,
+        //             "height": 300,
+        //             "name": "funnel",
+        //             "prop": "funnel",
+        //         },
+        //         "option": {
+        //             radius: true,
+        //             "barColor": [{
+        //                 "color1": "#83bff6",
+        //             },
+        //                 {
+        //                     "color1": "#23B7E5",
+        //                 },
+        //                 {
+        //                     "color1": "rgba(154, 168, 212, 1)",
+        //                 },
+        //                 {
+        //                     "color1": "#188df0",
+        //                 },
+        //                 {
+        //                     "color1": "#564AA3",
+        //                 }
+        //             ]
+        //         }
+        //     }
+        // },
+        // {
+        //     label: '地图',
+        //     option: {
+        //         "name": "地图",
+        //         "title": "地图",
+        //         "icon": "icon-map",
+        //         "img": require('@/assets/map.png'),
+        //         "data": [],
+        //         "dataFormatter": "",
+        //         "stylesFormatter": "",
+        //         "component": {
+        //             "width": 800,
+        //             "height": 500,
+        //             "name": "map",
+        //             "prop": "map",
+        //         },
+        //         "option": {
+        //             "borderWidth": 1,
+        //             "scale": 87,
+        //             "type": 0,
+        //             "borderColor": "#0dffff",
+        //             "areaColor": "#061d33",
+        //             "banner": true,
+        //             "bannerTime": 3000,
+        //             "fontSize": 14,
+        //             "zoom": 0.5,
+        //             "empAreaColor": "rgba(35, 183, 229, 0.42)",
+        //             "empColor": "#fff",
+        //             "index": "894edc1d-d2f0-4616-962c-8e61083ada71",
+        //             "mapData": "https://data.bladex.vip/blade-visual/map/data?id=1235103352843448322",
+        //             "color": "rgba(13, 255, 255, 1)",
+        //         }
+        //     },
+        // }
+    ]
 }, {
     "label": '文字',
     "icon": 'icon-text',
