@@ -45,6 +45,19 @@ import trendOption from '@/components/trend/option'
 //游标
 import cursorOption from '@/components/cursor/option'
 
+//基础组件
+//横线
+import baseXlineOption from '@/components/base/xline/option'
+//竖线
+import baseYlineOption from '@/components/base/yline/option'
+//圆形
+import baseCircleOption from '@/components/base/circle/option'
+//矩形
+import baseRectangleOption from '@/components/base/rectangle/option'
+//文本域
+import baseTextOption from '@/components/base/text/option'
+//按扭
+import baseButtonOption from '@/components/base/button/option'
 
 export default {
   components: {
@@ -78,6 +91,7 @@ export default {
     alertOption,
     alertListOption,
     energyOption,
-    levelOption,moveCarOption,lightOption,trendOption
+    levelOption,moveCarOption,lightOption,trendOption,
+    baseXlineOption,baseYlineOption,baseCircleOption,baseRectangleOption,baseTextOption,baseButtonOption
   }
 }

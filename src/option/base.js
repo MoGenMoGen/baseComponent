@@ -620,7 +620,163 @@ export default [{
                     ]
                 },
             }
+        },{
+            label: '横线',
+            option: {
+                "name": "横线",
+                "title": "横线",
+                "icon": 'icon-bar',
+                "img": require('@/assets/base/xline.png'),
+                "data": [],
+                "dataFormatter": "",
+                "stylesFormatter": "",
+                "component": {
+                    "width": 200,
+                    "height": 5,
+                    "name": "baseXline",
+                    "prop": "baseXline",
+                },
+                "option": {
+                    "color": '#f00',
+                    "opacity":100,
+                    "borderColor":'',
+                    "borderWidth":1,
+                    "borderType":'solid',
+                    "radius":0,
+                }
+            }
+        },{
+            label: '竖线',
+            option: {
+                "name": "竖线",
+                "title": "竖线",
+                "icon": 'icon-bar',
+                "img": require('@/assets/base/yline.png'),
+                "data": [],
+                "dataFormatter": "",
+                "stylesFormatter": "",
+                "component": {
+                    "width": 5,
+                    "height": 200,
+                    "name": "baseYline",
+                    "prop": "baseYline",
+                },
+                "option": {
+                    "color": '#f00',
+                    "opacity":100,
+                    "borderColor":'',
+                    "borderWidth":1,
+                    "borderType":'solid',
+                    "radius":0,
+                }
+            }
+        },{
+            label: '圆形',
+            option: {
+                "name": "圆形",
+                "title": "圆形",
+                "icon": 'icon-bar',
+                "img": require('@/assets/base/circle.png'),
+                "data": [],
+                "dataFormatter": "",
+                "stylesFormatter": "",
+                "component": {
+                    "width": 200,
+                    "height": 200,
+                    "name": "baseCircle",
+                    "prop": "baseCircle",
+                },
+                "option": {
+                    "color": '#f00',
+                    "opacity":100,
+                    "borderColor":'',
+                    "borderWidth":1,
+                    "borderType":'solid',
+                }
+            }
+        },{
+            label: '矩形',
+            option: {
+                "name": "矩形",
+                "title": "矩形",
+                "icon": 'icon-bar',
+                "img": require('@/assets/base/rectangle.png'),
+                "data": [],
+                "dataFormatter": "",
+                "stylesFormatter": "",
+                "component": {
+                    "width": 200,
+                    "height": 200,
+                    "name": "baseRectangle",
+                    "prop": "baseRectangle",
+                },
+                "option": {
+                    "color": '#f00',
+                    "opacity":100,
+                    "borderColor":'',
+                    "borderWidth":1,
+                    "borderType":'solid',
+                }
+            }
+        },{
+            label: '文本域',
+            option: {
+                "name": "文本域",
+                "title": "文本域",
+                "icon": 'icon-bar',
+                "img": require('@/assets/base/text.png'),
+                "data": [],
+                "dataFormatter": "",
+                "stylesFormatter": "",
+                "component": {
+                    "width": 200,
+                    "height": 200,
+                    "name": "baseText",
+                    "prop": "baseText",
+                },
+                "option": {
+                    "color": '#fff',
+                    "lineHeight":24,
+                     'fontWeight':'normal',
+                    "opacity":100,
+                    "fontSize":'18',
+                    "textarea":'',
+                    "fontFamily":'微软雅黑'
+                }
+            }
+        },{
+            label: '按扭',
+            option: {
+                "name": "按扭",
+                "title": "按扭",
+                "icon": 'icon-bar',
+                "img": require('@/assets/base/button.png'),
+                "data": [],
+                "dataFormatter": "",
+                "stylesFormatter": "",
+                "component": {
+                    "width": 200,
+                    "height": 50,
+                    "name": "baseButton",
+                    "prop": "baseButton",
+                },
+                "option": {
+                    "color": '#fff',
+                    "borderColor":'',
+                    "borderWidth":1,
+                    "borderType":'solid',
+                    "bgColor":'#f00',
+                    "lineHeight":24,
+                    'fontWeight':'normal',
+                    "opacity":100,
+                    "fontSize":'18',
+                    "textarea":'',
+                    "fontFamily":'微软雅黑',
+                    "radius":20,
+                }
+            }
         },
+
         // {
         //     label: '散点图',
         //     option: {

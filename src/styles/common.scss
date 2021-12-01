@@ -13,6 +13,35 @@ body,
 #app {
   height: 100%;
 }
+.avue-draggable{
+  padding: 0!important;
+}
+
+
+@font-face {
+  font-family: 'Deng';  /*重命名字体名*/
+  src: url('./fonts/Deng.ttf');  /*引入字体*/
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'simfang';  /*重命名字体名*/
+  src: url('./fonts/simfang.ttf');  /*引入字体*/
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'simhei';  /*重命名字体名*/
+  src: url('./fonts/simhei.ttf');  /*引入字体*/
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'simkai';  /*重命名字体名*/
+  src: url('./fonts/simkai.ttf');  /*引入字体*/
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
   background: #171b22;

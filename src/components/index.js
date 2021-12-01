@@ -14,13 +14,22 @@ import light from './light/'
 import trend from './trend/'
 import cursor from './cursor'
 
+//基础组件
+import baseXline from './base/xline'
+import baseYline from './base/yline'
+import baseCircle from './base/circle'
+import baseRectangle from './base/rectangle'
+import baseText from './base/text'
+import baseButton from './base/button'
+
 
 import $Echart from '../echart/common';
 import { KEY_COMPONENT_NAME } from '../echart/variable';
 
 export default (() => {
   const list = [
-    Test,State,Xline,Alert,alertList,energy,level,moveCar,light,trend,cursor
+    Test,State,Xline,Alert,alertList,energy,level,moveCar,light,trend,cursor,
+      baseXline,baseYline,baseCircle,baseRectangle,baseText,baseButton
   ]
   let result = {}
   //循环注册组件
