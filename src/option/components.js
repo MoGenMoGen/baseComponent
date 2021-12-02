@@ -58,6 +58,8 @@ import baseRectangleOption from '@/components/base/rectangle/option'
 import baseTextOption from '@/components/base/text/option'
 //按扭
 import baseButtonOption from '@/components/base/button/option'
+// 仪表盘
+import baseBashBoardOption from '@/components/base/dashboard/option'
 
 export default {
   components: {
@@ -92,6 +94,7 @@ export default {
     alertListOption,
     energyOption,
     levelOption,moveCarOption,lightOption,trendOption,
-    baseXlineOption,baseYlineOption,baseCircleOption,baseRectangleOption,baseTextOption,baseButtonOption
+    baseXlineOption,baseYlineOption,baseCircleOption,baseRectangleOption,baseTextOption,baseButtonOption,
+	baseBashBoardOption
   }
 }

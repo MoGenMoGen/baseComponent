@@ -21,6 +21,7 @@ import baseCircle from './base/circle'
 import baseRectangle from './base/rectangle'
 import baseText from './base/text'
 import baseButton from './base/button'
+import baseDashboard from './base/dashboard'
 
 
 import $Echart from '../echart/common';
@@ -29,7 +30,7 @@ import { KEY_COMPONENT_NAME } from '../echart/variable';
 export default (() => {
   const list = [
     Test,State,Xline,Alert,alertList,energy,level,moveCar,light,trend,cursor,
-      baseXline,baseYline,baseCircle,baseRectangle,baseText,baseButton
+      baseXline,baseYline,baseCircle,baseRectangle,baseText,baseButton,baseDashboard
   ]
   let result = {}
   //循环注册组件
