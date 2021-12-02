@@ -832,6 +832,52 @@ export default [{"label": '基础组件',
                     ]
                 },
             }
+        },{
+            label: '仪表盘',
+            option: {
+                "name": "仪表盘",
+                "title": "仪表盘",
+                "icon": 'icon-gauge',
+                "img": require('@/assets/gauge.png'),
+                "data": {
+                    min: 1,
+                    max: 10,
+                    label: '名称',
+                    value: 4,
+                    unit: '%'
+                },
+                "dataFormatter": "",
+                "stylesFormatter": "",
+                "component": {
+                    "width": 390,
+                    "height": 314,
+                    "name": "baseDashboard",
+                    "prop": "baseDashboard"
+                },
+                "option": {
+                    "lineSize": 15,
+                    "axisLabelShow": false,
+                    "axisLabelFontSize": 25,
+                    "nameFontSize": 20,
+                    "valueFontSize": 30,
+                    "nameColor": "",
+                    "lineColor": "#eee",
+                    "barColor": [
+                        {
+                            "color1": "rgba(154, 168, 212, 1)",
+                            "postion": "0.2",
+                        },
+                        {
+                            "color1": "#23B7E5",
+                            "postion": "0.8",
+                        },
+                        {
+                            "color1": "#564AA3",
+                            "postion": "1",
+                        }
+                    ]
+                },
+            }
         },
 
         // {
