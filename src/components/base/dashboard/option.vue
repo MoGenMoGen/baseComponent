@@ -1,7 +1,7 @@
 <!-- 自定义配置 -->
 <template>
   <div>
-    <el-form-item label="刻度线粗度(像素)">
+   <el-form-item label="刻度线粗度(像素)">
       <avue-input-number v-model="main.activeOption.lineSize"></avue-input-number>
     </el-form-item>
     <el-form-item label="显示刻度值">

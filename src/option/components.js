@@ -67,7 +67,7 @@ import basePolygonOption from '@/components/base/polygon/option'
 //二维码
 import baseQrcodeOption from '@/components/base/qrcode/option'
 // 仪表盘
-import baseBashBoardOption from '@/components/base/dashboard/option'
+import baseDashboardOption from '@/components/base/dashboard/option'
 
 export default {
   components: {
@@ -102,9 +102,7 @@ export default {
     alertListOption,
     energyOption,
     levelOption, moveCarOption, lightOption, trendOption,
-
     baseXlineOption, baseYlineOption, baseCircleOption, baseRectangleOption, baseTextOption, baseButtonOption, baseInputOption, baseSelectOption,
-    basePolygonOption, baseQrcodeOption, baseBashBoardOption
-
+    basePolygonOption, baseQrcodeOption, baseDashboardOption
   }
 }
