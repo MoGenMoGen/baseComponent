@@ -24,14 +24,15 @@ import baseButton from './base/button'
 import basePolygon from './base/polygon'
 import baseDashboard from './base/dashboard'
 import baseQrcode from './base/qrcode'
-
+import baseInput from './base/input'
+import baseSelect from './base/select'
 import $Echart from '../echart/common';
 import { KEY_COMPONENT_NAME } from '../echart/variable';
 
 export default (() => {
   const list = [
-    Test,State,Xline,Alert,alertList,energy,level,moveCar,light,trend,cursor,
-      baseXline,baseYline,baseCircle,baseRectangle,baseText,baseButton,basePolygon,baseQrcode,baseDashboard
+    Test, State, Xline, Alert, alertList, energy, level, moveCar, light, trend, cursor,
+    baseXline, baseYline, baseCircle, baseRectangle, baseText, baseButton, baseInput, baseSelect, basePolygon, baseQrcode, baseDashboard
   ]
   let result = {}
   //循环注册组件

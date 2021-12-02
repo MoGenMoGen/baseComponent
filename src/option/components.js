@@ -56,6 +56,10 @@ import baseCircleOption from '@/components/base/circle/option'
 import baseRectangleOption from '@/components/base/rectangle/option'
 //文本域
 import baseTextOption from '@/components/base/text/option'
+//输入框
+import baseInputOption from '@/components/base/input/option'
+//下拉框
+import baseSelectOption from '@/components/base/select/option'
 //按扭
 import baseButtonOption from '@/components/base/button/option'
 //多边形
@@ -67,7 +71,7 @@ import baseBashBoardOption from '@/components/base/dashboard/option'
 
 export default {
   components: {
-    commonOption,cursorOption,
+    commonOption, cursorOption,
     mainOption,
     barOption,
     datetimeOption,
@@ -97,9 +101,10 @@ export default {
     alertOption,
     alertListOption,
     energyOption,
-    levelOption,moveCarOption,lightOption,trendOption,
-    baseXlineOption,baseYlineOption,baseCircleOption,baseRectangleOption,baseTextOption,baseButtonOption,
+    levelOption, moveCarOption, lightOption, trendOption,
 
-    basePolygonOption,baseQrcodeOption,baseBashBoardOption
+    baseXlineOption, baseYlineOption, baseCircleOption, baseRectangleOption, baseTextOption, baseButtonOption, baseInputOption, baseSelectOption,
+    basePolygonOption, baseQrcodeOption, baseBashBoardOption
+
   }
 }
