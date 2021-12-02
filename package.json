@@ -23,6 +23,7 @@
     "mqtt": "^4.2.8",
     "view-design": "^4.7.0-rc.1",
     "vue": "^2.6.11",
+    "vue-qr": "^3.2.2",
     "vue-router": "3.1.0",
     "vue-sketch-ruler": "^1.0.3",
     "vuedraggable": "^2.23.2"

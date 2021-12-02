@@ -7,7 +7,8 @@
 - components下的index.js配置
 
 
-
+引入iconfont，这个是原来的，不要动，在他下面添加我们自己的
+https://at.alicdn.com/t/font_1117329_z5buvlhlaf.css
 
 ## 引入其他项目使用
 执行npm run lib 打出对应的包(public/lib)
