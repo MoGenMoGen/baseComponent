@@ -14,6 +14,7 @@ import '@/theme/index.js'
 import 'echarts-liquidfill'
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
+
 window.axios = axios;
 Vue.config.productionTip = false
 Vue.prototype.url = url;

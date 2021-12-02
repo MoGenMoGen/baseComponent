@@ -225,6 +225,7 @@ export default {
       obj.left = 0;
       obj.top = 0
       obj.index = uuid();
+      obj.option.index = obj.index
       if (first) {
         this.contain.nav.unshift(obj);
       } else {

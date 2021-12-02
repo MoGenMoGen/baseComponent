@@ -58,6 +58,10 @@ import baseRectangleOption from '@/components/base/rectangle/option'
 import baseTextOption from '@/components/base/text/option'
 //按扭
 import baseButtonOption from '@/components/base/button/option'
+//多边形
+import basePolygonOption from '@/components/base/polygon/option'
+//二维码
+import baseQrcodeOption from '@/components/base/qrcode/option'
 
 export default {
   components: {
@@ -92,6 +96,7 @@ export default {
     alertListOption,
     energyOption,
     levelOption,moveCarOption,lightOption,trendOption,
-    baseXlineOption,baseYlineOption,baseCircleOption,baseRectangleOption,baseTextOption,baseButtonOption
+    baseXlineOption,baseYlineOption,baseCircleOption,baseRectangleOption,baseTextOption,baseButtonOption,
+    basePolygonOption,baseQrcodeOption
   }
 }
