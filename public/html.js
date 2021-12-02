@@ -27,6 +27,7 @@ window.html = `<!DOCTYPE html>
   <script src="https://data.avuejs.com/cdn/element-ui/2.13.2/index.js" charset="utf-8"></script>
   <script src="https://cdn.staticfile.org/Swiper/4.5.1/js/swiper.min.js"> </script>
   <script src="https://data.avuejs.com/lib/index.umd.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/fabric.js/451/fabric.min.js"></script>
   <title>avue-data数据大屏</title>
   <style>
     * {
