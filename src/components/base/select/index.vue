@@ -1,28 +1,13 @@
 <template>
   <!-- 下拉框 -->
   <div>
-    <!-- <p
-      :style="{
-        opacity: option.opacity / 100,
-        borderRadius: option.radius + 'px',
-        borderWidth: option.borderWidth + 'px',
-        borderColor: option.borderColor,
-        borderStyle: option.borderType,
-        backgroundColor: option.bgColor,
-        color: option.color,
-        lineHeight: option.lineHeight + 'px',
-        fontSize: option.fontSize + 'px',
-        fontWeight: option.fontWeight,
-        fontFamily: option.fontFamily,
-      }"
-      style="padding: 0 10px"
-    >
-      {{ option.input ? option.input : "请输入文本内容" }}
-    </p> -->
     <Select v-model="value" clearable :style="styleVar">
-      <Option v-for="item in list" :value="item.value" :key="item.value">{{
-        item.label
-      }}</Option>
+      <Option
+        v-for="(item, index) in option.List"
+        :value="item.input"
+        :key="index"
+        >{{ item.input }}</Option
+      >
     </Select>
   </div>
 </template>
@@ -38,41 +23,25 @@ export default {
   data() {
     return {
       show: true,
-      list: [
-        {
-          value: "New York",
-          label: "New York",
-        },
-        {
-          value: "London",
-          label: "London",
-        },
-        {
-          value: "Sydney",
-          label: "Sydney",
-        },
-        {
-          value: "Ottawa",
-          label: "Ottawa",
-        },
-        {
-          value: "Paris",
-          label: "Paris",
-        },
-        {
-          value: "Canberra",
-          label: "Canberra",
-        },
-      ],
       value: "",
-      color: "#384545",
     };
   },
   computed: {
     styleVar() {
       return {
-        "--color": "yellow",
-        "--boc": "red",
+        "--width": this.component.width + "px",
+        "--height": this.component.height + "px",
+        "--opacity": this.option.opacity / 100,
+        "--borderRadius": this.option.radius + "px",
+        "--borderWidth": this.option.borderWidth + "px",
+        "--borderColor": this.option.borderColor,
+        "--borderStyle": this.option.borderType,
+        "--backgroundColor": this.option.bgColor,
+        "--color": this.option.color,
+        "--lineHeight": this.option.lineHeight + "px",
+        "--fontSize": this.option.fontSize + "px",
+        "--fontWeight": this.option.fontWeight,
+        "--fontFamily": this.option.fontFamily,
       };
     },
   },
@@ -97,22 +66,37 @@ export default {
         });
       }
     },
-    changeStyle() {
-      console.log(111, this.color);
-      let obj = document.getElementsByClassName("ivu-select-selection")[0];
-      console.log(22, obj);
-      obj.style.backgroundColor = "green !important";
-    },
   },
 };
 </script>
 <style lang="scss" scoped>
 .ivu-select {
-  background-color: var(--color);
-
+  width: var(--width);
+  height: var(--height);
   ::v-deep .ivu-select-selection {
-    background-color: var(--color);
-    border: 1px solid var(--boc);
+    width: var(--width);
+    height: var(--height);
+    background-color: var(--backgroundColor);
+    opacity: var(--opacity);
+    border-radius: var(--borderRadius);
+    border-width: var(--borderWidth);
+    border-color: var(--borderColor);
+    border-style: var(--borderStyle);
+    color: var(--color);
+    line-height: var(--lineHeight);
+    font-size: var(--fontSize);
+    font-weight: var(--fontWeight);
+    font-family: var(--fontFamily);
   }
+}
+::v-deep .ivu-select-selected-value {
+  font-size: var(--fontSize) !important;
+  line-height: var(--lineHeight) !important;
+  height: var(--height) !important;
+}
+::v-deep .ivu-select-placeholder {
+  font-size: var(--fontSize) !important;
+  line-height: var(--lineHeight) !important;
+  height: var(--height) !important;
 }
 </style>

@@ -1,15 +1,16 @@
 <!-- 自定义配置 -->
 <template>
   <div>
-    <el-form-item label="文本内容">
-      <el-input
-        type="textarea"
-        :autosize="{ minRows: 2, maxRows: 4 }"
-        placeholder="请输入文本内容"
-        v-model="main.activeOption.input"
-      >
-      </el-input>
-    </el-form-item>
+   <el-button type="primary" plain round style="margin:0 10px;" @click="AddInput">新增文本</el-button>
+    <el-form-item label="文本内容" v-for="(item,index) in main.activeOption.List" :key="index">
+        <el-input
+          type="input"
+          placeholder="请输入文本内容"
+          v-model="item.input"
+        >
+        </el-input>
+        <el-button  type="danger" style="margin-top:3px;" @click="Del(index)">删除</el-button>
+    </el-form-item> 
     <el-form-item label="背景颜色">
       <avue-input-color
         color-format="hex"
@@ -121,6 +122,19 @@ export default {
         }
       }
     },
+    AddInput(){
+      //最多10条数据
+      if(this.main.activeOption.List.length>10)
+      {}
+      else
+      this.main.activeOption.List.push({input:''})
+    },
+    Del(index){
+      if(this.main.activeOption.List.length==1)
+      {}
+      else
+      this.main.activeOption.List.splice(index,1)
+    }
   },
 };
 </script>
